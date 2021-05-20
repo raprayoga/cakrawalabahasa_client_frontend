@@ -1,11 +1,13 @@
 import { Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
+import "./App.scss";
 
 function App() {
   return (
     <>
       <div className="App">HELLO WORLD</div>
-      <Button variant="primary">Info</Button>
+      <Button variant="primary">
+        <span className="text-grray-900">Info</span>
+      </Button>
     </>
   );
 }
