@@ -1,13 +1,14 @@
-import { Button } from "react-bootstrap";
+import LandingPage from "pages/LandingPage";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import "./App.scss";
 
 function App() {
   return (
     <>
-      <div className="App">HELLO WORLD</div>
-      <Button variant="primary">
-        <span className="text-grray-900">Info</span>
-      </Button>
+      <Router>
+        <Route path="/" component={LandingPage}></Route>
+      </Router>
     </>
   );
 }
