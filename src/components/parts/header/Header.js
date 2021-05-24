@@ -1,4 +1,6 @@
 import React from "react";
+import "components/parts/header/header.css";
+
 import {
   Navbar,
   NavDropdown,
@@ -17,9 +19,7 @@ export default function Header(props) {
           <Navbar.Brand href="#home">
             <img
               src={LogoBrand}
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
+              className="d-inline-block align-top logo-brand"
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>

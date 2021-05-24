@@ -1,4 +1,4 @@
-import LandingPage from "pages/LandingPage";
+import LandingPage from "components/pages/LandingPage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.scss";
