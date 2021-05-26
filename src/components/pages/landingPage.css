@@ -1,5 +1,9 @@
 .jumbotron {
   background-size: cover;
   height: 566px;
-  background-position-y: -30px;
+}
+
+.jumbotron h1 {
+  font-family: Montserrat-SemiBold, Arial, serif;
+  margin-top: 5rem;
 }

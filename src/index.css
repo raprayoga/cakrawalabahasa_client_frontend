@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: local('Montserrat-Regular'), url(./assets/fonts/Montserrat/Montserrat-Regular.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: local('Montserrat-Bold'), url(./assets/fonts/Montserrat/Montserrat-Bold.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: local('Montserrat-SemiBold'), url(./assets/fonts/Montserrat/Montserrat-SemiBold.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+
+body {
+  font-family: Montserrat-Regular, Arial, serif;
+}
