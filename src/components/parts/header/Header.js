@@ -30,12 +30,11 @@ export default function Header(props) {
           >
             <Nav className="mr-auto">
               <NavDropdown title="Menu " id="basic-nav-dropdown">
-                <NavDropdown.Item href="/">Action</NavDropdown.Item>
                 <NavDropdown.Item href="/our-programs">
                   Our Programs
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/news">News</NavDropdown.Item>
-                <NavDropdown.Item href="/">Registration</NavDropdown.Item>
+                <NavDropdown.Item href="/registration">Registration</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="#home"> About</Nav.Link>
               <Nav.Link href="#link">Contact</Nav.Link>

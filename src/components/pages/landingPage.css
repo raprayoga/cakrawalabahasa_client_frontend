@@ -1,9 +1,51 @@
-.jumbotron {
+#jumbotron {
   background-size: cover;
   height: 566px;
 }
 
-.jumbotron h1 {
+#jumbotron h1, .our-program h2 {
   font-family: Montserrat-SemiBold, Arial, serif;
   margin-top: 5rem;
+}
+
+.program-list {
+  min-height: 482px;
+}
+
+.program-list .row {
+  height: 50%;
+}
+
+.jumbotron-fluid {
+  background-size: cover;
+}
+
+.program-more {
+  text-align: right;
+}
+
+.program1 {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+}
+
+.image-program {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+}
+
+@media only screen and (max-width: 720px) {
+  .program-list .col-md-8 {
+    padding-bottom: 1rem !important;
+  }
 }
