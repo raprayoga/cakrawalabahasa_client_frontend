@@ -32,7 +32,7 @@ export default class LandingPage extends Component {
               </p>
             </div>
             <a
-              className="btn btn-primary text-light mt-3"
+              className="btn btn-warning text-light mt-3"
               href="/registration"
               role="button"
             >
@@ -49,7 +49,7 @@ export default class LandingPage extends Component {
                 <div className="image-program p-2">
                   <img
                     src={Program1}
-                    className="program1"
+                    className="program"
                     alt="React Bootstrap logo"
                   />
                   <div className="overlay"></div>
@@ -68,7 +68,7 @@ export default class LandingPage extends Component {
                     <div className="image-program p-2">
                       <img
                         src={Program2}
-                        className="img-fluid program1"
+                        className="img-fluid program"
                         alt="React Bootstrap logo"
                       />
                       <div className="overlay"></div>
@@ -87,7 +87,7 @@ export default class LandingPage extends Component {
                     <div className="image-program p-2">
                       <img
                         src={Program3}
-                        className="img-fluid program1"
+                        className="img-fluid program"
                         alt="React Bootstrap logo"
                       />
                       <div className="overlay"></div>

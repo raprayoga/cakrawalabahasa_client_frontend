@@ -34,7 +34,9 @@ export default function Header(props) {
                   Our Programs
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/news">News</NavDropdown.Item>
-                <NavDropdown.Item href="/registration">Registration</NavDropdown.Item>
+                <NavDropdown.Item href="/registration">
+                  Registration
+                </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="#home"> About</Nav.Link>
               <Nav.Link href="#link">Contact</Nav.Link>
@@ -51,7 +53,7 @@ export default function Header(props) {
                 <NavDropdown.Item href="/">English</NavDropdown.Item>
                 <NavDropdown.Item href="/">Indonesia</NavDropdown.Item>
               </NavDropdown>
-              <Button variant="primary" className="text-light">
+              <Button variant="warning" className="text-light">
                 Sign In
               </Button>
             </Nav>
