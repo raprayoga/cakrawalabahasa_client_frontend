@@ -4,10 +4,14 @@
   background-position: center;
 }
 
-#jumbotron h1,
-.our-program h2 {
+#jumbotron h1 {
   font-family: Montserrat-SemiBold, Arial, serif;
   margin-top: 5rem;
+}
+
+.our-program h2,
+.news h2 {
+  font-family: Montserrat-SemiBold, Arial, serif;
 }
 
 .program-list {
@@ -54,6 +58,12 @@
 .caption {
   position: absolute;
   bottom: 0;
+}
+
+.news {
+  margin-top: 5rem;
+  min-height: 635px;
+  background-color: #1d2951;
 }
 
 @media only screen and (max-width: 720px) {

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import axios from "axios";
 
 import Header from "components/parts/header/Header";
 import Hero from "assets/images/hero.png";
@@ -11,6 +13,20 @@ import Program3 from "assets/images/our_program3.png";
 import "components/pages/landingPage.css";
 
 export default class LandingPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      artikels: [],
+    };
+    this.getArtikel();
+  }
+
+  async getArtikel() {
+    await axios.get("http://127.0.0.1:8000/api/artikel").then((resp) => {
+      this.setState({ artikels: resp.data.artikels });
+    });
+  }
+
   render() {
     return (
       <>
@@ -112,6 +128,35 @@ export default class LandingPage extends Component {
                   </Link>
                 </Router>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="news pt-4">
+          <div className="container">
+            <h2 className="my-4 text-light">News</h2>
+            <div className="row">
+              {this.state.artikels.map((artikel) => (
+                <div className="col-md-4">
+                  <Card
+                    style={{ backgroundColor: "#1D2951" }}
+                    key={artikel.index}
+                    text="white"
+                  >
+                    <Card.Img
+                      variant="top"
+                      src={"http://127.0.0.1:8080/img/artikel/" + artikel.image}
+                    />
+                    <Card.Body>
+                      <Card.Title>{artikel.judul}</Card.Title>
+                      <Card.Text>
+                        Some quick example text to build on the card title and
+                        make up the bulk of the card's content.
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </div>
+              ))}
             </div>
           </div>
         </div>
