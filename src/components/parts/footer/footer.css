@@ -1,0 +1,9 @@
+.footer-wrap {
+  height: 262px;
+}
+
+.menu,
+.about,
+.contact {
+  font-family: Montserrat-SemiBold, Arial, serif;
+}

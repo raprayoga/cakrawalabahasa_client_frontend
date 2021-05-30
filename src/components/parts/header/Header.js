@@ -1,5 +1,7 @@
 import React from "react";
 import "components/parts/header/header.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 import {
   Navbar,
@@ -20,7 +22,7 @@ export default function Header(props) {
             <img
               src={LogoBrand}
               className="d-inline-block align-top logo-brand"
-              alt="React Bootstrap logo"
+              alt="Cakrawala Bahasa Logo"
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -41,13 +43,14 @@ export default function Header(props) {
               <Nav.Link href="#home"> About</Nav.Link>
               <Nav.Link href="#link">Contact</Nav.Link>
             </Nav>
-            <Form inline>
+            <Form className="search-insert" inline>
               <FormControl
                 type="text"
                 placeholder="Search"
                 className="mr-sm-2"
               />
             </Form>
+            <FontAwesomeIcon icon={faGlobe} />
             <Nav className="mr-auto">
               <NavDropdown title="Eng" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/">English</NavDropdown.Item>

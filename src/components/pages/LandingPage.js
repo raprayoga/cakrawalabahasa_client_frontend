@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 import Header from "components/parts/header/Header";
+import Footer from "components/parts/footer/Footer";
+
 import Hero from "assets/images/hero.png";
 import Program1 from "assets/images/our_program1.png";
 import Program2 from "assets/images/our_program2.png";
@@ -124,7 +126,7 @@ export default class LandingPage extends Component {
               <div className="col-12 program-more">
                 <Router>
                   <Link to="/our-program">
-                    Show More <FontAwesomeIcon icon={faCaretRight} />
+                    Show More <FontAwesomeIcon icon={faChevronRight} />
                   </Link>
                 </Router>
               </div>
@@ -137,7 +139,7 @@ export default class LandingPage extends Component {
             <h2 className="my-4 text-light">News</h2>
             <div className="row">
               {this.state.artikels.map((artikel) => (
-                <div className="col-md-4">
+                <div className="col-md-4 mb-3">
                   <Card
                     style={{ backgroundColor: "#1D2951" }}
                     key={artikel.index}
@@ -158,8 +160,20 @@ export default class LandingPage extends Component {
                 </div>
               ))}
             </div>
+
+            <div className="row mt-2 mt-md-4">
+              <div className="col-12 news-more">
+                <Router>
+                  <Link to="/news">
+                    Show More <FontAwesomeIcon icon={faChevronRight} />
+                  </Link>
+                </Router>
+              </div>
+            </div>
           </div>
         </div>
+
+        <Footer {...this.props}></Footer>
       </>
     );
   }

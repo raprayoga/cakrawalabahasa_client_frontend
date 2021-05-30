@@ -14,6 +14,10 @@
   font-family: Montserrat-SemiBold, Arial, serif;
 }
 
+.our-program {
+  margin-top: 5rem;
+}
+
 .program-list {
   min-height: 482px;
 }
@@ -26,7 +30,8 @@
   background-size: cover;
 }
 
-.program-more {
+.program-more,
+.news-more {
   text-align: right;
 }
 
