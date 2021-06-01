@@ -1,9 +1,25 @@
 .footer-wrap {
-  height: 262px;
+  min-height: 262px;
 }
 
 .menu,
 .about,
-.contact {
+.contact,
+.follow-us {
   font-family: Montserrat-SemiBold, Arial, serif;
+}
+
+.icon {
+  width: 21.88px;
+  height: 21.88px;
+}
+
+hr {
+  height: 3px !important;
+}
+
+@media only screen and (min-width: 767px) {
+  hr {
+    margin-top: 2.5rem !important;
+  }
 }

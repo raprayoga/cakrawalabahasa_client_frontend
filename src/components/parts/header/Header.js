@@ -11,14 +11,17 @@ import {
   Form,
   FormControl,
 } from "react-bootstrap";
-import LogoBrand from "assets/images/logoBrand.jpg";
+
+import LogoBrand from "assets/images/logo/logoBrand.jpg";
+import flagEnglish from "assets/images/icon/flag-english.png";
+import flagIndonesia from "assets/images/icon/flag-indonesia.png";
 
 export default function Header(props) {
   return (
     <>
       <div className="container">
         <Navbar expand="lg">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               src={LogoBrand}
               className="d-inline-block align-top logo-brand"
@@ -40,8 +43,8 @@ export default function Header(props) {
                   Registration
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#home"> About</Nav.Link>
-              <Nav.Link href="#link">Contact</Nav.Link>
+              <Nav.Link href="/about-us"> About</Nav.Link>
+              <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
             <Form className="search-insert" inline>
               <FormControl
@@ -50,11 +53,25 @@ export default function Header(props) {
                 className="mr-sm-2"
               />
             </Form>
-            <FontAwesomeIcon icon={faGlobe} />
+            <FontAwesomeIcon className="d-none d-md-block" icon={faGlobe} />
             <Nav className="mr-auto">
               <NavDropdown title="Eng" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/">English</NavDropdown.Item>
-                <NavDropdown.Item href="/">Indonesia</NavDropdown.Item>
+                <NavDropdown.Item href="/">
+                  <img
+                    src={flagEnglish}
+                    className="d-inline-block align-top icon"
+                    alt="Youtube Icon"
+                  />
+                  English
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/">
+                  <img
+                    src={flagIndonesia}
+                    className="d-inline-block align-top icon"
+                    alt="Youtube Icon"
+                  />
+                  Indonesia
+                </NavDropdown.Item>
               </NavDropdown>
               <Button variant="warning" className="text-light">
                 Sign In

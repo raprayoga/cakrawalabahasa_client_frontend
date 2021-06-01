@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -8,11 +8,11 @@ import axios from "axios";
 import Header from "components/parts/header/Header";
 import Footer from "components/parts/footer/Footer";
 
-import Hero from "assets/images/hero.png";
-import Program1 from "assets/images/our_program1.png";
-import Program2 from "assets/images/our_program2.png";
-import Program3 from "assets/images/our_program3.png";
-import "components/pages/landingPage.css";
+import Hero from "assets/images/landingPage/hero.png";
+import Program1 from "assets/images/landingPage/our_program1.png";
+import Program2 from "assets/images/landingPage/our_program2.png";
+import Program3 from "assets/images/landingPage/our_program3.png";
+import "components/pages/landingPage/landingPage.css";
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -67,7 +67,7 @@ export default class LandingPage extends Component {
                 <div className="image-program p-2">
                   <img
                     src={Program1}
-                    className="program"
+                    className="img-program"
                     alt="React Bootstrap logo"
                   />
                   <div className="overlay"></div>
@@ -86,7 +86,7 @@ export default class LandingPage extends Component {
                     <div className="image-program p-2">
                       <img
                         src={Program2}
-                        className="img-fluid program"
+                        className="img-fluid img-program"
                         alt="React Bootstrap logo"
                       />
                       <div className="overlay"></div>
@@ -105,7 +105,7 @@ export default class LandingPage extends Component {
                     <div className="image-program p-2">
                       <img
                         src={Program3}
-                        className="img-fluid program"
+                        className="img-fluid img-program"
                         alt="React Bootstrap logo"
                       />
                       <div className="overlay"></div>
@@ -123,12 +123,10 @@ export default class LandingPage extends Component {
             </div>
 
             <div className="row mt-2 mt-md-4">
-              <div className="col-12 program-more">
-                <Router>
-                  <Link to="/our-program">
-                    Show More <FontAwesomeIcon icon={faChevronRight} />
-                  </Link>
-                </Router>
+              <div className="col-12 link-more">
+                <Link to="/our-program">
+                  Show More <FontAwesomeIcon icon={faChevronRight} />
+                </Link>
               </div>
             </div>
           </div>
@@ -162,12 +160,10 @@ export default class LandingPage extends Component {
             </div>
 
             <div className="row mt-2 mt-md-4">
-              <div className="col-12 news-more">
-                <Router>
-                  <Link to="/news">
-                    Show More <FontAwesomeIcon icon={faChevronRight} />
-                  </Link>
-                </Router>
+              <div className="col-12 link-more">
+                <Link to="/news">
+                  Show More <FontAwesomeIcon icon={faChevronRight} />
+                </Link>
               </div>
             </div>
           </div>
