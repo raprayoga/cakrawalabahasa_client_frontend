@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { faChevronRight, faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Header from "components/parts/header/Header";
 import Footer from "components/parts/footer/Footer";
@@ -13,9 +16,55 @@ export default class AboutUs extends Component {
 
         <div
           id="jumbotron"
-          className="jumbotron d-flex align-items-center"
+          className="jumbotron d-flex align-items-center mb-5"
           style={{ backgroundImage: `url(${Hero})` }}
         ></div>
+
+        <div className="container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li>
+                <Link to="/">
+                  <FontAwesomeIcon icon={faHome} />
+                </Link>
+              </li>
+              <li>
+                <FontAwesomeIcon icon={faChevronRight} className="mx-3" />
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                About Us
+              </li>
+            </ol>
+          </nav>
+
+          <h2 className="mb-5">Profil</h2>
+          <p>
+            Cakrawala Bahasa didirikan sejak tahun 2019 oleh Mahasiswa
+            Universitas Indonesia, seiring perkembangan Cakrawala Bahasa
+            digiatkan oleh berbagai Mahasiswa Indonesia yang menempuh studi di
+            dalam dan di luar negeri untuk memberikan pendidikan dan layanan
+            bahasa berkualitas sekaligus mendukung tujuan pembangunan
+            berkelanjutan atau SDG's di bidang pertumbuhan ekonomi dan kualitas
+            pendidikan.
+          </p>
+          <p>
+            Cakrawala Bahasa merupakan komunitas dan platform belajar yang
+            bergerak di bidang pendidikan bahasa. Melalui program-program,
+            Cakrawala Bahasa menyediakan berbagai layanan belajar dan jasa
+            bahasa dengan harga yang terjangkau. Selain itu, Cakrawala Bahasa
+            juga mewadahi relawan yang peduli terhadap pendidikan bahasa untuk
+            memberikan layanan belajar bahasa bagi yatim dan dhuafa.
+          </p>
+
+          <h2 className="my-5">Latar Belakang</h2>
+          <p>
+            Cakrawala Bahasa berawal dari sebua mimpi besar founder kami yaitu
+            "menjembatani seluruh guru bahasa dan murid di seluruh dunia untuk
+            meruntuhkan setiap batasan dalam pebelajaran bahasa baik secara
+            wilayah, budaya maupun kelas sosial". Impian tersebut berlandaskan
+            kepada tiga faktor yaitu sosial, pendidikan, dan ekonomi
+          </p>
+        </div>
 
         <Footer {...this.props}></Footer>
       </>

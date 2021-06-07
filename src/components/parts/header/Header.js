@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "components/parts/header/header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
@@ -43,8 +45,12 @@ export default function Header(props) {
                   Registration
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="/about-us"> About</Nav.Link>
-              <Nav.Link href="/contact">Contact</Nav.Link>
+              <Nav.Link>
+                <Link to="/about-us"> About </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/contact"> Contact </Link>
+              </Nav.Link>
             </Nav>
             <Form className="search-insert" inline>
               <FormControl

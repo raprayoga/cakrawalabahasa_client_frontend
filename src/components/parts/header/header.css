@@ -10,3 +10,12 @@ nav {
 .search-insert {
   margin-right: 1rem;
 }
+
+nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+nav a:hover {
+  color: #545454;
+}
