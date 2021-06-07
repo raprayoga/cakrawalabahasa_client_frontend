@@ -7,6 +7,10 @@ import Header from "components/parts/header/Header";
 import Footer from "components/parts/footer/Footer";
 
 import Hero from "assets/images/aboutUs/hero.png";
+import Social from "assets/images/aboutUs/social.png";
+import Economy from "assets/images/aboutUs/economy.png";
+import Study from "assets/images/aboutUs/study.png";
+import "components/pages/aboutUs/aboutUs.css";
 
 export default class AboutUs extends Component {
   render() {
@@ -64,6 +68,46 @@ export default class AboutUs extends Component {
             wilayah, budaya maupun kelas sosial". Impian tersebut berlandaskan
             kepada tiga faktor yaitu sosial, pendidikan, dan ekonomi
           </p>
+
+          <div className="row mt-5" id="pilar">
+            <div className="col-sm-4 text-center">
+              <img
+                src={Social}
+                className="img-fluid mb-4"
+                alt="social factor"
+              />
+              <h4>Sosial</h4>
+              <p>
+                Potensi PendudukUsia Muda <br />
+                (BPS, 2021)
+              </p>
+            </div>
+            <div className="col-sm-4 text-center">
+              <img
+                src={Economy}
+                className="img-fluid mb-4"
+                alt="economy factor"
+              />
+              <h4>Ekonomi</h4>
+              <p>
+                Kemampuan bahasa menentukan karir (Unniversity College Londodn,
+                2011)
+                <br />
+                Tren bahasa meningkat (BPS, 2016)
+                <br />
+                Ekonomi menengah meningkat (World Bank, 2020)
+              </p>
+            </div>
+            <div className="col-sm-4 text-center">
+              <img src={Study} className="img-fluid mb-4" alt="study factor" />
+              <h4>Pendidikan</h4>
+              <p>
+                Tingkat literasi Indonesia (UNESCO, 2016)
+                <br />
+                Kesenjangan pendidikan di Indonesia(PISA, 2019)
+              </p>
+            </div>
+          </div>
         </div>
 
         <Footer {...this.props}></Footer>
