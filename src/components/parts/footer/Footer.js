@@ -58,10 +58,8 @@ export default function Footer() {
             </div>
           </div>
           <div className="col-6 col-md-2">
-            <Link className="text-decoration-none" to="/menu">
-              <p className="menu text-secondary">Menu</p>
-            </Link>
-            <Link className="text-decoration-none" to="/our-program">
+            <p className="menu text-secondary">Menu</p>
+            <Link className="text-decoration-none" to="/our-programs">
               <p className="text-secondary">Our Programs</p>
             </Link>
             <Link className="text-decoration-none" to="/news-channel">

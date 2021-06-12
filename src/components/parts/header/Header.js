@@ -22,7 +22,7 @@ export default function Header(props) {
   return (
     <>
       <div className="container">
-        <Navbar expand="lg">
+        <Navbar expand="md">
           <Navbar.Brand href="/">
             <img
               src={LogoBrand}
@@ -59,7 +59,10 @@ export default function Header(props) {
                 className="mr-sm-2"
               />
             </Form>
-            <FontAwesomeIcon className="d-none d-md-block" icon={faGlobe} />
+            <FontAwesomeIcon
+              className="d-none d-lg-block d-sm-none"
+              icon={faGlobe}
+            />
             <Nav className="mr-auto">
               <NavDropdown title="Eng" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/">

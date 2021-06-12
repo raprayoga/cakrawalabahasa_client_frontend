@@ -20,6 +20,9 @@ export default class LandingPage extends Component {
     this.state = {
       artikels: [],
     };
+  }
+
+  componentDidMount() {
     this.getArtikel();
   }
 
@@ -65,11 +68,7 @@ export default class LandingPage extends Component {
             <div className="row program-list text-light">
               <div className="col-12 col-md-8">
                 <div className="image-program p-2">
-                  <img
-                    src={Program1}
-                    className="img-program"
-                    alt="React Bootstrap logo"
-                  />
+                  <img src={Program1} className="img-program" alt="Program 1" />
                   <div className="overlay"></div>
                   <div className="caption">
                     <h3>Fluid jumbotron</h3>
@@ -87,7 +86,7 @@ export default class LandingPage extends Component {
                       <img
                         src={Program2}
                         className="img-fluid img-program"
-                        alt="React Bootstrap logo"
+                        alt="Program 2"
                       />
                       <div className="overlay"></div>
                       <div className="caption">
@@ -106,7 +105,7 @@ export default class LandingPage extends Component {
                       <img
                         src={Program3}
                         className="img-fluid img-program"
-                        alt="React Bootstrap logo"
+                        alt="Program 3"
                       />
                       <div className="overlay"></div>
                       <div className="caption">
@@ -124,7 +123,7 @@ export default class LandingPage extends Component {
 
             <div className="row mt-2 mt-md-4">
               <div className="col-12 link-more">
-                <Link to="/our-program">
+                <Link to="/our-programs">
                   Show More <FontAwesomeIcon icon={faChevronRight} />
                 </Link>
               </div>
@@ -136,11 +135,11 @@ export default class LandingPage extends Component {
           <div className="container">
             <h2 className="my-4 text-light">News</h2>
             <div className="row">
-              {this.state.artikels.map((artikel) => (
+              {this.state.artikels.map((artikel, index) => (
                 <div className="col-md-4 mb-3">
                   <Card
                     style={{ backgroundColor: "#1D2951" }}
-                    key={artikel.index}
+                    key={index}
                     text="white"
                   >
                     <Card.Img
