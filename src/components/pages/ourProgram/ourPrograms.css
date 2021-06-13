@@ -1,23 +1,23 @@
-h1,
-h2,
-h3,
-h4 {
+.our-programs h1,
+.our-programs h2,
+.our-programs h3,
+.our-programs h4 {
   font-family: Montserrat-SemiBold, Arial, serif;
 }
 
-h3 {
+.our-programs h3 {
   font-size: x-large !important;
 }
 
-h4 {
+.our-programs h4 {
   font-size: larger !important;
 }
 
-p {
+.our-programs p {
   text-align: justify;
 }
 
-p span {
+.our-programs p span {
   font-style: italic;
 }
 

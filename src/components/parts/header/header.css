@@ -19,3 +19,16 @@ nav a {
 nav a:hover {
   color: #545454;
 }
+
+.navbar-nav a {
+  display: block;
+  padding: 0.5rem 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+.dropdown-menu a:hover {
+  background-color: #e5e5e5;
+}
