@@ -139,7 +139,7 @@ export default class LandingPage extends Component {
                 <div className="col-md-4 mb-3">
                   <Card
                     style={{ backgroundColor: "#1D2951" }}
-                    key={index}
+                    key={artikel.id}
                     text="white"
                   >
                     <Card.Img
@@ -147,7 +147,14 @@ export default class LandingPage extends Component {
                       src={"http://127.0.0.1:8080/img/artikel/" + artikel.image}
                     />
                     <Card.Body>
-                      <Card.Title>{artikel.judul}</Card.Title>
+                      <Link
+                        to={`/news-detail/${artikel.id}`}
+                        style={{ textDecoration: "none" }}
+                        className="text-light"
+                      >
+                        <Card.Title>{artikel.judul}</Card.Title>
+                      </Link>
+
                       <Card.Text>
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.

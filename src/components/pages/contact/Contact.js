@@ -79,7 +79,6 @@ export default class ContactUs extends Component {
           errorForm: error.response.data.errors,
           validated: false,
         });
-        console.log(this.state.errorForm);
       });
     this.setState({ busy: "d-none" });
   }
