@@ -1,5 +1,20 @@
+.artikel-container h2,
+.author {
+  font-family: Montserrat-SemiBold, Arial, serif;
+  text-align: left !important;
+}
+
+.share-button a,
+.share-button img {
+  width: 3.2rem;
+}
+
+.artikel-container small {
+  color: #c4c5cd;
+}
+
 @media only screen and (min-width: 768px) {
-  .custom-container {
+  .artikel-container {
     max-width: 675px !important;
     text-align: justify;
   }
