@@ -44,21 +44,6 @@ export default class ContactUs extends Component {
     });
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = event.target.value;
-    let formTemp = { ...this.state.form };
-    formTemp[target.name] = value;
-    this.setState({
-      form: { ...formTemp },
-    });
-  }
-
-  handleSubmit(event) {
-    this.submitForm();
-    event.preventDefault();
-  }
-
   async submitForm() {
     this.setState({ errorForm: {}, validated: "", busy: "d-block" });
     const payload = this.state.form;
@@ -76,11 +61,26 @@ export default class ContactUs extends Component {
           title: error.response.data.message,
         });
         this.setState({
-          errorForm: error.response.data.errors,
           validated: false,
+          errorForm: error.response.data.errors,
         });
       });
     this.setState({ busy: "d-none" });
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = event.target.value;
+    let formTemp = { ...this.state.form };
+    formTemp[target.name] = value;
+    this.setState({
+      form: { ...formTemp },
+    });
+  }
+
+  handleSubmit(event) {
+    this.submitForm();
+    event.preventDefault();
   }
 
   render() {
@@ -124,6 +124,7 @@ export default class ContactUs extends Component {
         </Form.Control.Feedback>
       );
     }
+    console.log(this.state.validated);
 
     return (
       <>
@@ -161,18 +162,19 @@ export default class ContactUs extends Component {
                   <Form.Group controlId="nama" className="mb-5">
                     <Form.Label>Full Name</Form.Label>
                     <Form.Control
+                      required
                       name="nama"
                       type="text"
                       placeholder="Enter Text Here"
                       value={this.state.form.nama}
                       onChange={this.handleInputChange}
-                      invalid={true}
                     />
                     {errorName}
                   </Form.Group>
                   <Form.Group controlId="phone" className="mb-5">
                     <Form.Label>Phone Number</Form.Label>
                     <Form.Control
+                      required
                       name="phone"
                       type="number"
                       placeholder="Enter Text Here"
@@ -184,6 +186,7 @@ export default class ContactUs extends Component {
                   <Form.Group controlId="email" className="mb-5">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
+                      required
                       name="email"
                       type="email"
                       placeholder="Enter Text Here"
@@ -195,6 +198,7 @@ export default class ContactUs extends Component {
                   <Form.Group controlId="pesan" className="mb-5">
                     <Form.Label>pesan</Form.Label>
                     <Form.Control
+                      required
                       name="pesan"
                       as="textarea"
                       placeholder="Enter Text Here"

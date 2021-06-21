@@ -81,6 +81,9 @@
   min-height: 635px;
   background-color: #1d2951;
 }
+.news a:hover {
+  color: #0a58ca !important;
+}
 
 @media only screen and (max-width: 720px) {
   .program-list .col-md-8 {

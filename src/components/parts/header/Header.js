@@ -23,13 +23,15 @@ export default function Header(props) {
     <>
       <div className="container">
         <Navbar expand="md">
-          <Navbar.Brand href="/">
-            <img
-              src={LogoBrand}
-              className="d-inline-block align-top logo-brand"
-              alt="Cakrawala Bahasa Logo"
-            />
-          </Navbar.Brand>
+          <Navbar>
+            <Link to="/">
+              <img
+                src={LogoBrand}
+                className="d-inline-block align-top logo-brand"
+                alt="Cakrawala Bahasa Logo"
+              />
+            </Link>
+          </Navbar>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse
             className="justify-content-end"

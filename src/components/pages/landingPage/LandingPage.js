@@ -28,7 +28,11 @@ export default class LandingPage extends Component {
 
   async getArtikel() {
     await axios.get("http://127.0.0.1:8000/api/artikel").then((resp) => {
-      this.setState({ artikels: resp.data.artikels });
+      let datas = resp.data.artikels;
+      datas.map((data, index) => {
+        datas[index].linkJudul = data.judul.replace(/ /g, "-");
+      });
+      this.setState({ artikels: datas });
     });
   }
 
@@ -71,10 +75,11 @@ export default class LandingPage extends Component {
                   <img src={Program1} className="img-program" alt="Program 1" />
                   <div className="overlay"></div>
                   <div className="caption">
-                    <h3>Fluid jumbotron</h3>
+                    <h3>Privat Bahasa</h3>
                     <p>
-                      This is a modified jumbotron that occupies the entire
-                      horizontal space of its parent.
+                      Belajar bahasa secara privat secara online atau offline
+                      dengan berbagai pilihan paket dan sesi yang memudahkan
+                      pembelajaran.
                     </p>
                   </div>
                 </div>
@@ -90,10 +95,10 @@ export default class LandingPage extends Component {
                       />
                       <div className="overlay"></div>
                       <div className="caption">
-                        <h3>Fluid jumbotron</h3>
+                        <h3>Kelas Reguler</h3>
                         <p>
-                          This is a modified jumbotron that occupies the entire
-                          horizontal space of its parent.
+                          Program kelas bahasa secara online selama 8 kali
+                          pertemuan dalam satu bulan.
                         </p>
                       </div>
                     </div>
@@ -109,10 +114,10 @@ export default class LandingPage extends Component {
                       />
                       <div className="overlay"></div>
                       <div className="caption">
-                        <h3>Fluid jumbotron</h3>
+                        <h3>Membership Program</h3>
                         <p>
-                          This is a modified jumbotron that occupies the entire
-                          horizontal space of its parent.
+                          Kami menyediakan berbagai kegiatan menarik melalui
+                          Membership Program Cakrawala Bahasa.
                         </p>
                       </div>
                     </div>
@@ -135,30 +140,23 @@ export default class LandingPage extends Component {
           <div className="container">
             <h2 className="my-4 text-light">News</h2>
             <div className="row">
-              {this.state.artikels.map((artikel, index) => (
-                <div className="col-md-4 mb-3">
-                  <Card
-                    style={{ backgroundColor: "#1D2951" }}
-                    key={artikel.id}
-                    text="white"
-                  >
+              {this.state.artikels.map((artikel) => (
+                <div className="col-md-4 mb-3" key={artikel.id}>
+                  <Card style={{ backgroundColor: "#1D2951" }} text="white">
                     <Card.Img
                       variant="top"
                       src={"http://127.0.0.1:8080/img/artikel/" + artikel.image}
                     />
                     <Card.Body>
                       <Link
-                        to={`/news-detail/${artikel.id}`}
+                        to={`/news-detail/${artikel.id}/${artikel.linkJudul}`}
                         style={{ textDecoration: "none" }}
                         className="text-light"
                       >
                         <Card.Title>{artikel.judul}</Card.Title>
                       </Link>
 
-                      <Card.Text>
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </Card.Text>
+                      <Card.Text>{artikel.text_lead}</Card.Text>
                     </Card.Body>
                   </Card>
                 </div>

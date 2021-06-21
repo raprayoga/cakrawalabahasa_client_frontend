@@ -2,6 +2,7 @@ import LandingPage from "components/pages/landingPage/LandingPage";
 import AboutUs from "components/pages/aboutUs/AboutUs";
 import OurPrograms from "components/pages/ourProgram/OurPrograms";
 import Contact from "components/pages/contact/Contact";
+import SignUp from "components/pages/signUp/SignUp";
 import NewsDetail from "components/pages/newsDetail/NewsDetail";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/our-programs" component={OurPrograms}></Route>
         <Route path="/news-detail/:id" component={NewsDetail}></Route>
         <Route path="/contact" component={Contact}></Route>
+        <Route path="/sign-up" component={SignUp}></Route>
       </Router>
     </>
   );

@@ -1,10 +1,5 @@
-.form-label {
+.signup-title {
   font-family: Montserrat-SemiBold, Arial, serif;
-}
-
-input,
-textarea {
-  background-color: #f1f1f4 !important;
 }
 
 .invalid-feedback {
