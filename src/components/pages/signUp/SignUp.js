@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Redirect, useHistory } from "react-router-dom";
 
-import SignUpImage from "assets/images/signUp/signUp.png";
+import SignUpImage from "assets/images/sign/signUp.png";
 
 import "components/pages/signUp/signUp.css";
 
@@ -17,12 +18,13 @@ export default class SignUp extends Component {
         phone: "",
         email: "",
         password: "",
-        passoword_confirmation: "",
-        agreement: "",
+        password_confirmation: "",
+        agreement: false,
       },
       errorForm: {},
       busy: "d-none",
       validated: "",
+      redirect: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,6 +52,9 @@ export default class SignUp extends Component {
           icon: "success",
           title: response.data.message,
         });
+        this.setState({
+          redirect: true,
+        });
       })
       .catch((error) => {
         this.Toast.fire({
@@ -57,7 +62,7 @@ export default class SignUp extends Component {
           title: error.response.data.message,
         });
         this.setState({
-          errorForm: error.response.data.errors,
+          errorForm: error.response.data.errors || error.response.data.message,
           validated: false,
         });
       });
@@ -68,18 +73,30 @@ export default class SignUp extends Component {
     const target = event.target;
     const value = event.target.value;
     let formTemp = { ...this.state.form };
-    formTemp[target.name] = value;
+    formTemp[target.name] =
+      target.name !== "agreement" ? value : event.target.checked;
     this.setState({
       form: { ...formTemp },
     });
   }
 
   handleSubmit(event) {
-    this.submitForm();
+    if (!this.state.form.agreement) {
+      this.Toast.fire({
+        icon: "error",
+        title: "You must check The Terms and Privacy Policy",
+      });
+    } else {
+      this.submitForm();
+    }
     event.preventDefault();
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/sign-in" />;
+    }
+
     let errorFullName;
     let errorUserName;
     let errorPhone;
@@ -122,7 +139,7 @@ export default class SignUp extends Component {
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.passoword_confirmation) {
+    if (this.state.errorForm.password_confirmation) {
       errorPasswordConfirm = (
         <Form.Control.Feedback type="invalid">
           {this.state.errorForm.passoword_confirm}
@@ -139,9 +156,9 @@ export default class SignUp extends Component {
 
     return (
       <>
-        <div className="row signup-row">
+        <div className="row signup-row d-flex align-items-center">
           <div className="col-md-4 d-none d-md-block">
-            <img src={SignUpImage} className="img-fluid" alt="signup" />
+            <img src={SignUpImage} className="img-fluid " alt="signup" />
           </div>
           <div className="col-md-8 p-5">
             <h1 className="signup-title">Sign Up</h1>
@@ -149,6 +166,7 @@ export default class SignUp extends Component {
               <Form.Group controlId="name" className="mb-5">
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
+                  required
                   name="name"
                   type="text"
                   placeholder="Enter Text Here"
@@ -209,16 +227,20 @@ export default class SignUp extends Component {
                   value={this.state.form.password}
                   onChange={this.handleInputChange}
                 />
+                <small>
+                  Password terdiri dari minimal 8 karakter kombinasi huruf
+                  besar-kecil dan angka/simbol
+                </small>
                 {errorPassword}
               </Form.Group>
-              <Form.Group controlId="passoword_confirmation" className="mb-5">
+              <Form.Group controlId="password_confirmation" className="mb-5">
                 <Form.Label>Password Confirm</Form.Label>
                 <Form.Control
                   required
-                  name="passoword_confirmation"
+                  name="password_confirmation"
                   type="password"
                   placeholder="Enter Text Here"
-                  value={this.state.form.passoword_confirmation}
+                  value={this.state.form.password_confirmation}
                   onChange={this.handleInputChange}
                 />
                 {errorPasswordConfirm}
@@ -228,16 +250,14 @@ export default class SignUp extends Component {
                 name="agreement"
                 type="checkbox"
                 id="gree"
-                value="true"
+                checked={this.state.agreement}
                 onChange={this.handleInputChange}
               />
               {errorAgree}
               <Button
                 variant="warning"
                 type="submit"
-                className="text-light mt-5 m-auto d-flex"
-                value="submit"
-                stlyle={{ width: "100%" }}
+                className="text-light mt-5 m-auto d-flex text-center w-100"
               >
                 <span
                   className={`spinner-border text-light ${this.state.busy}`}
@@ -245,7 +265,7 @@ export default class SignUp extends Component {
                   aria-hidden="true"
                   style={{ marginRight: "20px" }}
                 ></span>
-                <span>Sign Up</span>
+                <span className="m-auto">Sign Up</span>
               </Button>
             </Form>
           </div>

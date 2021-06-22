@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "components/parts/header/header.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 import {
   Navbar,
@@ -15,8 +15,8 @@ import {
 } from "react-bootstrap";
 
 import LogoBrand from "assets/images/logo/logoBrand.jpg";
-import flagEnglish from "assets/images/icon/flag-english.png";
-import flagIndonesia from "assets/images/icon/flag-indonesia.png";
+// import flagEnglish from "assets/images/icon/flag-english.png";
+// import flagIndonesia from "assets/images/icon/flag-indonesia.png";
 
 export default function Header(props) {
   return (
@@ -53,12 +53,12 @@ export default function Header(props) {
                 className="mr-sm-2"
               />
             </Form>
-            <FontAwesomeIcon
+            {/* <FontAwesomeIcon
               className="d-none d-lg-block d-sm-none"
               icon={faGlobe}
-            />
+            /> */}
             <Nav className="mr-auto">
-              <NavDropdown title="Eng" id="basic-nav-dropdown">
+              {/* <NavDropdown title="Eng" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/">
                   <img
                     src={flagEnglish}
@@ -75,7 +75,7 @@ export default function Header(props) {
                   />
                   Indonesia
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
               <Button variant="warning" className="text-light">
                 Sign In
               </Button>

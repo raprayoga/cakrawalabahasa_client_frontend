@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import LogoBrand from "assets/images/logo/logoBrand.jpg";
-import { Dropdown } from "react-bootstrap";
+// import { Dropdown } from "react-bootstrap";
 
 import "components/parts/footer/footer.css";
 
@@ -12,8 +12,8 @@ import facebookIcon from "assets/images/icon/facebookIcon.png";
 import instagramIcon from "assets/images/icon/instagramIcon.png";
 import linkedinIcon from "assets/images/icon/linkedinIcon.png";
 import youtubeIcon from "assets/images/icon/youtubeIcon.png";
-import flagEnglish from "assets/images/icon/flag-english.png";
-import flagIndonesia from "assets/images/icon/flag-indonesia.png";
+// import flagEnglish from "assets/images/icon/flag-english.png";
+// import flagIndonesia from "assets/images/icon/flag-indonesia.png";
 
 export default function Footer() {
   return (
@@ -26,7 +26,7 @@ export default function Footer() {
               className="align-top logo-brand"
               alt="Cakrawala Bahasa Logo"
             />
-            <div className="row mt-2" inline="true">
+            {/* <div className="row mt-2" inline="true">
               <Dropdown>
                 <FontAwesomeIcon icon={faGlobe} /> Eng
                 <Dropdown.Toggle
@@ -55,7 +55,7 @@ export default function Footer() {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-            </div>
+            </div> */}
           </div>
           <div className="col-6 col-md-2">
             <p className="menu text-secondary">Menu</p>
