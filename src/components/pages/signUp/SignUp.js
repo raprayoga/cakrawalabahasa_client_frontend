@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import SignUpImage from "assets/images/sign/signUp.png";
 
