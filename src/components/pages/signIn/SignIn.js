@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 import SignInImage from "assets/images/sign/signIn.png";
 
@@ -96,51 +95,53 @@ export default class SignUp extends Component {
 
     return (
       <>
-        <div className="row signup-row d-flex align-items-center">
-          <div className="col-md-4 d-none d-md-block">
-            <img src={SignInImage} className="img-fluid " alt="signup" />
-          </div>
-          <div className="col-md-8 p-5">
-            <h1 className="signup-title">Sign Up</h1>
-            <Form validated={this.state.validated} onSubmit={this.handleSubmit}>
-              <Form.Group controlId="akun" className="mb-5">
-                <Form.Label>Email/Username</Form.Label>
-                <Form.Control
-                  required
-                  name="akun"
-                  type="text"
-                  placeholder="Enter Text Here"
-                  value={this.state.form.akun}
-                  onChange={this.handleInputChange}
-                />
-                {errorAkun}
-              </Form.Group>
-              <Form.Group controlId="password" className="mb-5">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  required
-                  name="password"
-                  type="password"
-                  placeholder="Enter Text Here"
-                  value={this.state.form.password}
-                  onChange={this.handleInputChange}
-                />
-                {errorPassword}
-              </Form.Group>
-              <Button
-                variant="warning"
-                type="submit"
-                className="text-light mt-5 m-auto d-flex text-center w-100"
-              >
-                <span
-                  className={`spinner-border text-light ${this.state.busy}`}
-                  role="status"
-                  aria-hidden="true"
-                  style={{ marginRight: "20px" }}
-                ></span>
-                <span className="m-auto">Sign Up</span>
-              </Button>
-            </Form>
+        <div className="signin-container">
+          <div className="row signup-row d-flex align-items-center">
+            <div className="col-md-4 d-none d-md-block">
+              <img src={SignInImage} className="img-fluid " alt="signup" />
+            </div>
+            <div className="col-md-8 p-5">
+              <h1 className="signup-title">Sign In</h1>
+              <Form validated={this.state.validated} onSubmit={this.handleSubmit}>
+                <Form.Group controlId="akun" className="mb-5">
+                  <Form.Label>Email/Username</Form.Label>
+                  <Form.Control
+                    required
+                    name="akun"
+                    type="text"
+                    placeholder="Enter Text Here"
+                    value={this.state.form.akun}
+                    onChange={this.handleInputChange}
+                  />
+                  {errorAkun}
+                </Form.Group>
+                <Form.Group controlId="password" className="mb-5">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    required
+                    name="password"
+                    type="password"
+                    placeholder="Enter Text Here"
+                    value={this.state.form.password}
+                    onChange={this.handleInputChange}
+                  />
+                  {errorPassword}
+                </Form.Group>
+                <Button
+                  variant="warning"
+                  type="submit"
+                  className="text-light mt-5 m-auto d-flex text-center w-100"
+                >
+                  <span
+                    className={`spinner-border text-light ${this.state.busy}`}
+                    role="status"
+                    aria-hidden="true"
+                    style={{ marginRight: "20px" }}
+                  ></span>
+                  <span className="m-auto">Sign Up</span>
+                </Button>
+              </Form>
+            </div>
           </div>
         </div>
       </>

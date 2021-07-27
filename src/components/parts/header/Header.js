@@ -76,9 +76,11 @@ export default function Header(props) {
                   Indonesia
                 </NavDropdown.Item>
               </NavDropdown> */}
-              <Button variant="warning" className="text-light">
-                Sign In
-              </Button>
+              <Link to="/sign-in">
+                <Button variant="warning" className="text-light">
+                  Sign In
+                </Button>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
