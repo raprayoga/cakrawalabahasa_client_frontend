@@ -3,6 +3,7 @@ import AboutUs from "components/pages/aboutUs/AboutUs";
 import OurPrograms from "components/pages/ourProgram/OurPrograms";
 import Contact from "components/pages/contact/Contact";
 import NewsDetail from "components/pages/newsDetail/NewsDetail";
+import News from "components/pages/news/News";
 import SignUp from "components/pages/signUp/SignUp";
 import SignIn from "components/pages/signIn/SignIn";
 
@@ -19,6 +20,10 @@ import SignIn from "components/pages/signIn/SignIn";
     {
       path: "/our-programs",
       component: OurPrograms
+    },
+    {
+      path: "/news",
+      component: News
     },
     {
       path: "/news-detail/:id",

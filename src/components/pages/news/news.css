@@ -1,0 +1,13 @@
+.news-container h1,
+.news-container h2 {
+  font-family: Montserrat-SemiBold, Arial, serif;
+}
+
+.news-container .kategori-button {
+  width: inherit;
+  border-radius: 15px;
+}
+
+.news-container a:hover {
+  color: #0a58ca !important;
+}

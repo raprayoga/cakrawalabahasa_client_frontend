@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import SignUpImage from "assets/images/sign/signUp.png";
 
@@ -156,13 +156,13 @@ export default class SignUp extends Component {
 
     return (
       <>
-        <div className="row signup-row d-flex align-items-center">
-          <div className="col-md-4 d-none d-md-block">
+        <div className="row d-flex align-items-center">
+          <div className="col-md-5 d-none d-md-block">
             <img src={SignUpImage} className="img-fluid " alt="signup" />
           </div>
-          <div className="col-md-8 p-5">
+          <div className="col-md-5 offset-md-1 p-5">
             <h1 className="signup-title">Sign Up</h1>
-            <Form validated={this.state.validated} onSubmit={this.handleSubmit}>
+            <Form validated={this.state.validated} onSubmit={this.handleSubmit} className="my-3">
               <Form.Group controlId="name" className="mb-5">
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
@@ -268,6 +268,7 @@ export default class SignUp extends Component {
                 <span className="m-auto">Sign Up</span>
               </Button>
             </Form>
+            <small>Sudah punya akun ? <Link to="/sign-in"> Sign In </Link></small>
           </div>
         </div>
       </>

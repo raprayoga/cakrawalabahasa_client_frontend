@@ -5,3 +5,8 @@
 .invalid-feedback {
   display: block !important;
 }
+
+.signin-container {
+  max-width: 720px;
+  margin: auto;
+}
