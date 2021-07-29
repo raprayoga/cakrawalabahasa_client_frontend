@@ -176,7 +176,7 @@ export default class SignUp extends Component {
                 {errorFullName}
               </Form.Group>
               <div className="row">
-                <div className="col-sm-6">
+                <div className="col-md-6">
                   <Form.Group controlId="username" className="mb-5">
                     <Form.Label>Username</Form.Label>
                     <Form.Control
@@ -190,7 +190,7 @@ export default class SignUp extends Component {
                     {errorUserName}
                   </Form.Group>
                 </div>
-                <div className="col-sm-6">
+                <div className="col-md-6">
                   <Form.Group controlId="phone" className="mb-5">
                     <Form.Label>Phone Number</Form.Label>
                     <Form.Control
@@ -245,14 +245,16 @@ export default class SignUp extends Component {
                 />
                 {errorPasswordConfirm}
               </Form.Group>
-              <Form.Check
-                label="I agree to The Terms and Privacy Policy."
-                name="agreement"
+              <div class="d-flex align-items-start">
+                <input
                 type="checkbox"
+                name="agreement"
                 id="gree"
+                className="mr-3"
                 checked={this.state.agreement}
-                onChange={this.handleInputChange}
-              />
+                onChange={this.handleInputChange}/>
+                <label for="gree">I agree to The Terms and Privacy Policy.</label>
+              </div>
               {errorAgree}
               <Button
                 variant="warning"

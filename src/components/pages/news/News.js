@@ -3,7 +3,9 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 import {
-  Card
+  Card,
+  Carousel,
+  Button
 } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
@@ -15,6 +17,35 @@ import Footer from "components/parts/footer/Footer";
 
 import "components/pages/news/news.css";
 
+function CarouselItem(props) {
+  let dokumentasi = props.dokumentasi;
+  console.log(dokumentasi)
+  const items = dokumentasi.filter((dokumen, index) => index < 5).map((dokumen, index) => 
+      index === 0
+      ?
+      <div className="col-6 mb-3" key={index}>
+        <div className="col-md-12 container">
+          <Card.Img
+            variant="top"
+            src={`http://127.0.0.1:8080/img/dokumentasi/${dokumen.image}`}
+          />
+        </div>
+      </div>
+      :
+      <div className="col-3 mb-3" key={index}>
+        <div className="col-md-12 container">
+          <Card.Img
+            variant="top"
+            src={`http://127.0.0.1:8080/img/dokumentasi/${dokumen.image}`}
+          />
+        </div>
+      </div>
+    );
+  return (
+    items
+  );
+}
+
 export default class News extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +53,7 @@ export default class News extends Component {
       artikelKategori: [],
       artikelFeatureds: [],
       artikelLatests: [],
+      dokumentasis: [],
     };
 
     this.Toast = Swal.mixin({
@@ -41,6 +73,7 @@ export default class News extends Component {
     this.getArtikelKategori();
     this.getArtikelFeatured();
     this.getArtikelLatest();
+    this.getDoumentasi();
   }
 
   async getArtikelKategori() {
@@ -107,130 +140,167 @@ export default class News extends Component {
       });
   }
 
+  async getDoumentasi() {
+    await axios
+      .get(`http://127.0.0.1:8000/api/dokumentasi`)
+      .then((resp) => {
+        let datas = resp.data.dokuemntasi_batchs;
+        this.setState({
+          dokumentasis: datas,
+        });
+      })
+      .catch((error) => {
+        this.Toast.fire({
+          icon: "error",
+          title: error.response.data.message,
+        });
+      });
+  }
+
   render() {
     return (
       <>
         <Header {...this.props}></Header>
 
-        <div className="container mt-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li>
-                <Link to="/">
-                  <FontAwesomeIcon icon={faHome} />
-                </Link>
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faChevronRight} className="mx-3" />
-              </li>
-              <li className="breadcrumb-item" aria-current="page">
-                <p>News</p>
-              </li>
-            </ol>
-          </nav>
-        </div>
-
-        <div className="container news-container">
-          <h1>News Channel</h1>
-          <div className="row mb-5">
-            {this.state.artikelKategori.map((kategori) => (
-            <Link to={`/news/${kategori.artikel_kategori}`} key={kategori.id} className="btn btn-outline-warning btn-sm kategori-button">
-              {kategori.artikel_kategori}
-            </Link>
-            ))}
+        <div id="news-channel">
+          <div className="container mt-3">
+            <nav aria-label="breadcrumb">
+              <ol className="breadcrumb">
+                <li>
+                  <Link to="/">
+                    <FontAwesomeIcon icon={faHome} />
+                  </Link>
+                </li>
+                <li>
+                  <FontAwesomeIcon icon={faChevronRight} className="mx-3" />
+                </li>
+                <li className="breadcrumb-item" aria-current="page">
+                  <p>News</p>
+                </li>
+              </ol>
+            </nav>
           </div>
 
-          <h2>Latest News</h2>
-          <div className="row">
-          {this.state.artikelLatests.map((artikelLatest, index)=> (
-          index === 0
-            ?
-            <div className="col-12 mb-3" key={artikelLatest.id}>
-              <div className="row align-items-center">
-                <div className="col-md-7">
-                  <Card.Img
-                    variant="top"
-                    src={`http://127.0.0.1:8080/img/artikel/${artikelLatest.image}`}
-                  />
-                </div>
-                <div className="col-md-4">
-                  <Link
-                    to={`/news-detail/${artikelLatest.id}/${artikelLatest.linkJudul}`}
-                    style={{ textDecoration: "none" }}
-                    className="text-secondary"
-                  >
-                    <h4>{artikelLatest.judul}</h4>
-                  </Link>
-                  <small className="font-size-sm">
-                    {artikelLatest.dateUpload} {artikelLatest.timeUpload}
-                  </small>
-                  <p>{artikelLatest.text_lead}</p>
+          <div className="container">
+            <h1>News Channel</h1>
+            <div className="row mb-5">
+              {this.state.artikelKategori.map((kategori) => (
+              <Link to={`/news?kategori=${kategori.artikel_kategori}`} key={kategori.id} className="kategori-link p-0">
+                <Button variant="outline-warning" size="sm" className="kategori-button">
+                  {kategori.artikel_kategori}
+                </Button>
+              </Link>
+              ))}
+            </div>
+
+            <h2>Latest News</h2>
+            <div className="row">
+            {this.state.artikelLatests.map((artikelLatest, index)=> (
+            index === 0
+              ?
+              <div className="col-12 mb-3" key={artikelLatest.id}>
+                <div className="row align-items-center">
+                  <div className="col-md-7">
+                    <Card.Img
+                      variant="top"
+                      src={`http://127.0.0.1:8080/img/artikel/${artikelLatest.image}`}
+                    />
+                  </div>
+                  <div className="col-md-4">
+                    <Link
+                      to={`/news-detail/${artikelLatest.id}/${artikelLatest.linkJudul}`}
+                      style={{ textDecoration: "none" }}
+                      className="text-secondary"
+                    >
+                      <h5>{artikelLatest.judul}</h5>
+                    </Link>
+                    <small className="font-size-sm">
+                      {artikelLatest.dateUpload} {artikelLatest.timeUpload}
+                    </small>
+                    <p>{artikelLatest.text_lead}</p>
+                  </div>
                 </div>
               </div>
+              :
+              <div className="col-md-4 mb-3" key={artikelLatest.id}>
+                <Card.Img
+                  variant="top"
+                  src={`http://127.0.0.1:8080/img/artikel/${artikelLatest.image}`}
+                />
+                <Link
+                  to={`/news-detail/${artikelLatest.id}/${artikelLatest.linkJudul}`}
+                  style={{ textDecoration: "none" }}
+                  className="text-secondary"
+                >
+                  <h5>{artikelLatest.judul}</h5>
+                </Link>
+                <small className="font-size-sm">
+                  {artikelLatest.dateUpload} {artikelLatest.timeUpload}
+                </small>
+                <p>{artikelLatest.text_lead}</p>
+              </div>
+            ))}
             </div>
-            :
-            <div className="col-md-4 mb-3" key={artikelLatest.id}>
-              <Card.Img
-                variant="top"
-                src={`http://127.0.0.1:8080/img/artikel/${artikelLatest.image}`}
-              />
-              <Link
-                to={`/news-detail/${artikelLatest.id}/${artikelLatest.linkJudul}`}
-                style={{ textDecoration: "none" }}
-                className="text-secondary"
-              >
-                <h4>{artikelLatest.judul}</h4>
-              </Link>
-              <small className="font-size-sm">
-                {artikelLatest.dateUpload} {artikelLatest.timeUpload}
-              </small>
-              <p>{artikelLatest.text_lead}</p>
-            </div>
-          ))}
-          </div>
 
-          <h2>Featured</h2>
-          <div className="row">
-            <div className="col-md-8">
-              <div className="row">
+            <h2>Featured</h2>
+            <div className="row">
+              <div className="col-md-8">
+                <div className="row">
+                {this.state.artikelFeatureds.map((featured, index)=> (
+                  index < 4 &&
+                  <div className="col-md-6 mb-3" key={featured.artikel.id}>
+                    <Card.Img
+                      variant="top"
+                      src={`http://127.0.0.1:8080/img/artikel/${featured.artikel.image}`}
+                    />
+                    <Link
+                      to={`/news-detail/${featured.artikel.id}/${featured.linkJudul}`}
+                      style={{ textDecoration: "none" }}
+                      className="text-secondary"
+                    >
+                      <h5>{featured.artikel.judul}</h5>
+                    </Link>
+                    <small className="font-size-sm">
+                      {featured.dateUpload} {featured.timeUpload}
+                    </small>
+                    <p>{featured.artikel.text_lead}</p>
+                  </div>
+                ))}
+                </div>
+              </div>
+              <div className="col-md-4">
               {this.state.artikelFeatureds.map((featured, index)=> (
-                index < 4 &&
-                <div className="col-md-6 mb-3" key={featured.artikel.id}>
-                  <Card.Img
-                    variant="top"
-                    src={`http://127.0.0.1:8080/img/artikel/${featured.artikel.image}`}
-                  />
+                index >= 4 &&
+                <div className="mb-4" key={featured.artikel.id}>
                   <Link
                     to={`/news-detail/${featured.artikel.id}/${featured.linkJudul}`}
                     style={{ textDecoration: "none" }}
                     className="text-secondary"
                   >
-                    <h4>{featured.artikel.judul}</h4>
+                    <h5>{featured.artikel.judul}</h5>
                   </Link>
                   <small className="font-size-sm">
                     {featured.dateUpload} {featured.timeUpload}
                   </small>
-                  <p>{featured.artikel.text_lead}</p>
                 </div>
               ))}
               </div>
             </div>
-            <div className="col-md-4">
-            {this.state.artikelFeatureds.map((featured, index)=> (
-              index >= 4 &&
-              <div className="mb-4" key={featured.artikel.id}>
-                <Link
-                  to={`/news-detail/${featured.artikel.id}/${featured.linkJudul}`}
-                  style={{ textDecoration: "none" }}
-                  className="text-secondary"
-                >
-                  <h4>{featured.artikel.judul}</h4>
-                </Link>
-                <small className="font-size-sm">
-                  {featured.dateUpload} {featured.timeUpload}
-                </small>
-              </div>
-            ))}
+          </div>
+
+          <div className="dokumentasi py-3 my-5">
+            <div className="container">
+              <h2 className="my-4 text-light">Dokumentations</h2>
+              <Carousel>
+              {this.state.dokumentasis.map((dokumentasi) => (
+                <Carousel.Item key={dokumentasi.id}>
+                  <h5 className="text-light">{dokumentasi.judul}</h5>
+                  <div className="row">
+                    <CarouselItem dokumentasi={dokumentasi.dokumentasi} />
+                  </div>
+                </Carousel.Item>
+              ))}
+              </Carousel>
             </div>
           </div>
         </div>

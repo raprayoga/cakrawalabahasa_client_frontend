@@ -1,13 +1,21 @@
-.news-container h1,
-.news-container h2 {
+#news-channel h1,
+#news-channel h2,
+#news-channel h5 {
   font-family: Montserrat-SemiBold, Arial, serif;
 }
 
-.news-container .kategori-button {
-  width: inherit;
+#news-channel .kategori-button {
   border-radius: 15px;
 }
 
-.news-container a:hover {
+#news-channel .kategori-link {
+  width: inherit;
+}
+
+#news-channel a:hover {
   color: #0a58ca !important;
+}
+
+#news-channel .dokumentasi {
+  background-color: #1d2951;
 }

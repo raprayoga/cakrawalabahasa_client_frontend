@@ -9,12 +9,12 @@
   margin-top: 5rem;
 }
 
-.our-program h2,
+#landing-page .our-program h2,
 .news h2 {
   font-family: Montserrat-SemiBold, Arial, serif;
 }
 
-.our-program {
+#landing-page .our-program {
   margin-top: 5rem;
 }
 
@@ -76,12 +76,13 @@
   bottom: 0;
 }
 
-.news {
+#landing-page .news {
   margin-top: 5rem;
   min-height: 635px;
   background-color: #1d2951;
 }
-.news a:hover {
+
+#landing-page .news a:hover {
   color: #0a58ca !important;
 }
 

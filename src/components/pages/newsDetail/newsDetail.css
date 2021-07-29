@@ -1,15 +1,15 @@
-.artikel-container h2,
-.author {
+#news-detail .artikel-container h2,
+#news-detail .author {
   font-family: Montserrat-SemiBold, Arial, serif;
   text-align: left !important;
 }
 
-.share-button a,
-.share-button img {
+#news-detail .share-button a,
+#news-detail .share-button img {
   width: 3.2rem;
 }
 
-.artikel-container small {
+#news-detail .artikel-container small {
   color: #c4c5cd;
 }
 
