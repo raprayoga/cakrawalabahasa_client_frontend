@@ -58,7 +58,7 @@ export default class ContactUs extends Component {
       .catch((error) => {
         this.Toast.fire({
           icon: "error",
-          title: error.response.data.message,
+          title: error.response.data.message ? error.response.data.message : error,
         });
         this.setState({
           validated: false,

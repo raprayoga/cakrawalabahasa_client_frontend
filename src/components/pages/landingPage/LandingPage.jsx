@@ -141,7 +141,7 @@ export default class LandingPage extends Component {
             <div className="container">
               <h2 className="my-4 text-light">News</h2>
               <div className="row">
-                {this.state.artikels.map((artikel) => (
+                {this.state.artikels.filter((artikel, index) => index < 3).map((artikel) => (
                   <div className="col-md-4 mb-3" key={artikel.id}>
                     <Card style={{ backgroundColor: "#1D2951" }} text="white">
                       <Card.Img

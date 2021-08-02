@@ -11,6 +11,8 @@ import {
 import { Link } from "react-router-dom";
 import { faChevronRight, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HorizontalNewsCard from "components/_module/horizontalNewsCard";
+import VerticalNewscard from "components/_module/verticalNewscard";
 
 import Header from "components/parts/header/Header";
 import Footer from "components/parts/footer/Footer";
@@ -118,9 +120,9 @@ export default class News extends Component {
 
   async getArtikelLatest() {
     await axios
-      .get(`http://127.0.0.1:8000/api/artikel-latest`)
+      .get(`http://127.0.0.1:8000/api/artikel`)
       .then((resp) => {
-        let datas = resp.data.artikel_latests;
+        let datas = resp.data.artikels;
         datas.map((data, index) => {
           datas[index].linkJudul = data.judul.replace(/ /g, "-");
           datas[index].dateUpload = data.created_at.split("T")[0];
@@ -185,7 +187,7 @@ export default class News extends Component {
             <h1>News Channel</h1>
             <div className="row mb-5">
               {this.state.artikelKategori.map((kategori) => (
-              <Link to={`/news?kategori=${kategori.artikel_kategori}`} key={kategori.id} className="kategori-link p-0">
+              <Link to={`/all-news?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
                 <Button variant="outline-warning" size="sm" className="kategori-button">
                   {kategori.artikel_kategori}
                 </Button>
@@ -199,45 +201,17 @@ export default class News extends Component {
             index === 0
               ?
               <div className="col-12 mb-3" key={artikelLatest.id}>
-                <div className="row align-items-center">
-                  <div className="col-md-7">
-                    <Card.Img
-                      variant="top"
-                      src={`http://127.0.0.1:8080/img/artikel/${artikelLatest.image}`}
-                    />
-                  </div>
-                  <div className="col-md-4">
-                    <Link
-                      to={`/news-detail/${artikelLatest.id}/${artikelLatest.linkJudul}`}
-                      style={{ textDecoration: "none" }}
-                      className="text-secondary"
-                    >
-                      <h5>{artikelLatest.judul}</h5>
-                    </Link>
-                    <small className="font-size-sm">
-                      {artikelLatest.dateUpload} {artikelLatest.timeUpload}
-                    </small>
-                    <p>{artikelLatest.text_lead}</p>
-                  </div>
-                </div>
+                <HorizontalNewsCard
+                  imageClass="col-md-7"
+                  textClass="col-md-5"
+                  artikelData={artikelLatest}
+                />
               </div>
               :
               <div className="col-md-4 mb-3" key={artikelLatest.id}>
-                <Card.Img
-                  variant="top"
-                  src={`http://127.0.0.1:8080/img/artikel/${artikelLatest.image}`}
+                <VerticalNewscard
+                  artikelData={artikelLatest}
                 />
-                <Link
-                  to={`/news-detail/${artikelLatest.id}/${artikelLatest.linkJudul}`}
-                  style={{ textDecoration: "none" }}
-                  className="text-secondary"
-                >
-                  <h5>{artikelLatest.judul}</h5>
-                </Link>
-                <small className="font-size-sm">
-                  {artikelLatest.dateUpload} {artikelLatest.timeUpload}
-                </small>
-                <p>{artikelLatest.text_lead}</p>
               </div>
             ))}
             </div>
@@ -249,21 +223,9 @@ export default class News extends Component {
                 {this.state.artikelFeatureds.map((featured, index)=> (
                   index < 4 &&
                   <div className="col-md-6 mb-3" key={featured.artikel.id}>
-                    <Card.Img
-                      variant="top"
-                      src={`http://127.0.0.1:8080/img/artikel/${featured.artikel.image}`}
+                    <VerticalNewscard
+                      artikelData={featured.artikel}
                     />
-                    <Link
-                      to={`/news-detail/${featured.artikel.id}/${featured.linkJudul}`}
-                      style={{ textDecoration: "none" }}
-                      className="text-secondary"
-                    >
-                      <h5>{featured.artikel.judul}</h5>
-                    </Link>
-                    <small className="font-size-sm">
-                      {featured.dateUpload} {featured.timeUpload}
-                    </small>
-                    <p>{featured.artikel.text_lead}</p>
                   </div>
                 ))}
                 </div>
