@@ -124,7 +124,6 @@ export default class ContactUs extends Component {
         </Form.Control.Feedback>
       );
     }
-    console.log(this.state.validated);
 
     return (
       <>

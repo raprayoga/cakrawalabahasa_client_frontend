@@ -43,7 +43,7 @@ import SignIn from "components/pages/signIn/SignIn";
       component: SignIn
     },
     {
-      path: "/all-news",
+      path: "/news-list",
       component: NewsList
     }
   ];

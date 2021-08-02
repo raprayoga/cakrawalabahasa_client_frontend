@@ -22,7 +22,6 @@ import "components/pages/news/news.css";
 
 function CarouselItem(props) {
   let dokumentasi = props.dokumentasi;
-  console.log(dokumentasi)
   const items = dokumentasi.filter((dokumen, index) => index < 5).map((dokumen, index) => 
       index === 0
       ?
@@ -188,7 +187,7 @@ export default class News extends Component {
             <h1>News Channel</h1>
             <div className="row mb-5">
               {this.state.artikelKategori.map((kategori) => (
-              <Link to={`/all-news?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
+              <Link to={`/news-list?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
                 <Button variant="outline-warning" size="sm" className="kategori-button">
                   {kategori.artikel_kategori}
                 </Button>

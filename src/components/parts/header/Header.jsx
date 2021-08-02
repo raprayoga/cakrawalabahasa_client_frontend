@@ -58,7 +58,7 @@ export default function Header(props) {
               icon={faGlobe}
             /> */}
             <Nav className="mr-auto">
-              <Link to="/sign-up">Sign In</Link>
+              <Link to="/sign-in">Sign In</Link>
             </Nav>
             <Nav className="mr-auto">
               {/* <NavDropdown title="Eng" id="basic-nav-dropdown">

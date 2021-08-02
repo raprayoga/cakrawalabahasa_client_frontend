@@ -12,9 +12,3 @@
 #news-detail .artikel-container small {
   color: #c4c5cd;
 }
-
-@media only screen and (min-width: 768px) {
-  .artikel-container {
-    max-width: 675px !important;
-  }
-}

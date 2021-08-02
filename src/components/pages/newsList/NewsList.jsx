@@ -32,7 +32,6 @@ export default class NewsList extends Component {
       totalItem: 0,
       artikelKategori: []
     };
-    this.handleKategoriChange = this.handleKategoriChange.bind(this);    
 
     this.Toast = Swal.mixin({
       toast: true,
@@ -53,14 +52,14 @@ export default class NewsList extends Component {
     this.getArtikelKategori();
   }
 
-  async handleKategoriChange(event) {
-    const target = event.target;
-    const id = target.dataset.id;
-    await this.setState({
-      kategoriId: id,
+  componentWillMount() {
+    this.props.history.listen(async (location) => {
+      await this.setState({
+        kategoriId: location.search.split("=")[2],
+      });
+      this.getArtikel();
+      this.getArtikelKategori();
     });
-    this.getArtikel();
-    this.getArtikelKategori();
   }
   
   async handlePageChange(pageNumber) {
@@ -76,7 +75,6 @@ export default class NewsList extends Component {
       .get(`http://127.0.0.1:8000/api/artikel-kategori`)
       .then((resp) => {
         const kategori = resp.data.artikel_kategori.filter((kategori) => kategori.id == this.state.kategoriId)
-        console.log(kategori)
         this.setState({
           artikelKategori: resp.data.artikel_kategori,
           kategori: kategori[0].artikel_kategori
@@ -177,11 +175,9 @@ export default class NewsList extends Component {
 
             <div className="row mb-5">
               {this.state.artikelKategori.map((kategori) => (
-              <Link to={`/all-news?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
+              <Link to={`/news-list?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
                 <Button variant="outline-warning" size="sm" className="kategori-button"
                   active={kategori.id == this.state.kategoriId}
-                  data-id={kategori.id}
-                  onClick={this.handleKategoriChange}
                 >
                   {kategori.artikel_kategori}
                 </Button>
@@ -195,7 +191,7 @@ export default class NewsList extends Component {
             </div>
 
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-md-8 mb-5">
               {this.state.artikels.map((artikel)=> (
                 <div className="col-12 mb-3" key={artikel.id}>
                   <HorizontalNewsCard
