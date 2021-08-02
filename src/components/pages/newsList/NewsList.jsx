@@ -10,10 +10,11 @@ import {
 import { Link } from "react-router-dom";
 import { faChevronRight, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import HorizontalNewsCard from "components/_module/horizontalNewsCard";
 
 import Header from "components/parts/header/Header";
 import Footer from "components/parts/footer/Footer";
+import HorizontalNewsCard from "components/_module/horizontalNewsCard";
+import TitleNewsLink from "components/_module/titleNewsLink";
 
 import "components/pages/newsList/newsList.css";
 
@@ -22,6 +23,7 @@ export default class NewsList extends Component {
     super(props);
     const queryParams = this.props.location.search
     this.state = {
+      artikelPopulers: [],
       artikels: [],
       kategoriId: queryParams.split("=")[2],
       kategori: "",
@@ -47,6 +49,7 @@ export default class NewsList extends Component {
 
   componentDidMount() {
     this.getArtikel();
+    this.getArtikelPopuler();
     this.getArtikelKategori();
   }
 
@@ -57,21 +60,26 @@ export default class NewsList extends Component {
       kategoriId: id,
     });
     this.getArtikel();
+    this.getArtikelKategori();
   }
-
+  
   async handlePageChange(pageNumber) {
     await this.setState({
       currentPage: pageNumber,
     });
     this.getArtikel();
+    window.scrollTo({top: 0, behavior: 'smooth'})
   }
 
   async getArtikelKategori() {
     await axios
       .get(`http://127.0.0.1:8000/api/artikel-kategori`)
       .then((resp) => {
+        const kategori = resp.data.artikel_kategori.filter((kategori) => kategori.id == this.state.kategoriId)
+        console.log(kategori)
         this.setState({
           artikelKategori: resp.data.artikel_kategori,
+          kategori: kategori[0].artikel_kategori
         });
       })
       .catch((error) => {
@@ -101,10 +109,33 @@ export default class NewsList extends Component {
         });
         this.setState({
           artikels: datas,
-          kategori: resp.data.kategori.artikel_kategori,
           perPage: resp.data.per_page,
           currentPage: resp.data.current_page,
           totalItem: resp.data.total,
+        });
+      })
+      .catch((error) => {
+        this.Toast.fire({
+          icon: "error",
+          title: error.response.data.message ? error.response.data.message : error,
+        });
+      });
+  }
+
+  async getArtikelPopuler() {
+    await axios
+      .get("http://127.0.0.1:8000/api/artikel-populer")
+      .then((resp) => {
+        let datas = resp.data.artikels;
+        datas.map((data, index) => {
+          datas[index].linkJudul = data.judul.replace(/ /g, "-");
+          datas[index].dateUpload = data.created_at.split("T")[0];
+          datas[index].timeUpload = data.created_at
+            .split("T")[1]
+            .split(".000000Z")[0];
+        });
+        this.setState({
+          artikelPopulers: datas,
         });
       })
       .catch((error) => {
@@ -164,7 +195,7 @@ export default class NewsList extends Component {
             </div>
 
             <div className="row">
-              <div className="col-md-9">
+              <div className="col-md-8">
               {this.state.artikels.map((artikel)=> (
                 <div className="col-12 mb-3" key={artikel.id}>
                   <HorizontalNewsCard
@@ -187,8 +218,14 @@ export default class NewsList extends Component {
                   />
                 </div>
               </div>
-              <div className="col-md-3">
-
+              <div className="col-md-4">
+              <h5 className="mb-5">Artikel Terpopuler</h5>
+              {this.state.artikelPopulers.map((populer)=> (
+                <TitleNewsLink
+                  artikelData={populer}
+                  key={populer.id}
+                />
+              ))}
               </div>
             </div>
           </div>

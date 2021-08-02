@@ -5,3 +5,7 @@
 #news-list .kategori-link {
   width: inherit;
 }
+
+#news-list a:hover {
+  color: #f78a28 !important;
+}

@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 import { Link } from "react-router-dom";
-import { faChevronRight, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faHome, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Header from "components/parts/header/Header";
@@ -126,7 +126,7 @@ export default class NewsDetail extends Component {
                 alt="Contact Us"
               />
             </div>
-            <p className="author my-0">By {this.state.artikel.author}</p>
+            <p className="author my-0"><FontAwesomeIcon icon={faUser} />  {this.state.artikel.author}</p>
             <small className="font-size-sm">
               {this.state.dateUpload} {this.state.timeUpload}
             </small>

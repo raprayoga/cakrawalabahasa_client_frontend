@@ -58,6 +58,9 @@ export default function Header(props) {
               icon={faGlobe}
             /> */}
             <Nav className="mr-auto">
+              <Link to="/sign-up">Sign In</Link>
+            </Nav>
+            <Nav className="mr-auto">
               {/* <NavDropdown title="Eng" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/">
                   <img
@@ -76,9 +79,9 @@ export default function Header(props) {
                   Indonesia
                 </NavDropdown.Item>
               </NavDropdown> */}
-              <Link to="/sign-in">
+              <Link to="/sign-up">
                 <Button variant="warning" className="text-light">
-                  Sign In
+                  Sign Up
                 </Button>
               </Link>
             </Nav>

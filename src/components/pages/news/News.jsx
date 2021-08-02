@@ -11,11 +11,12 @@ import {
 import { Link } from "react-router-dom";
 import { faChevronRight, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import HorizontalNewsCard from "components/_module/horizontalNewsCard";
-import VerticalNewscard from "components/_module/verticalNewscard";
 
 import Header from "components/parts/header/Header";
 import Footer from "components/parts/footer/Footer";
+import HorizontalNewsCard from "components/_module/horizontalNewsCard";
+import VerticalNewscard from "components/_module/verticalNewscard";
+import TitleNewsLink from "components/_module/titleNewsLink";
 
 import "components/pages/news/news.css";
 
@@ -100,9 +101,9 @@ export default class News extends Component {
       .then((resp) => {
         let datas = resp.data.artikel_featureds;
         datas.map((data, index) => {
-          datas[index].linkJudul = data.artikel.judul.replace(/ /g, "-");
-          datas[index].dateUpload = data.artikel.created_at.split("T")[0];
-          datas[index].timeUpload = data.artikel.created_at
+          datas[index].artikel.linkJudul = data.artikel.judul.replace(/ /g, "-");
+          datas[index].artikel.dateUpload = data.artikel.created_at.split("T")[0];
+          datas[index].artikel.timeUpload = data.artikel.created_at
             .split("T")[1]
             .split(".000000Z")[0];
         });
@@ -233,18 +234,9 @@ export default class News extends Component {
               <div className="col-md-4">
               {this.state.artikelFeatureds.map((featured, index)=> (
                 index >= 4 &&
-                <div className="mb-4" key={featured.artikel.id}>
-                  <Link
-                    to={`/news-detail/${featured.artikel.id}/${featured.linkJudul}`}
-                    style={{ textDecoration: "none" }}
-                    className="text-secondary"
-                  >
-                    <h5>{featured.artikel.judul}</h5>
-                  </Link>
-                  <small className="font-size-sm">
-                    {featured.dateUpload} {featured.timeUpload}
-                  </small>
-                </div>
+                <TitleNewsLink
+                  artikelData={featured.artikel}
+                />
               ))}
               </div>
             </div>
