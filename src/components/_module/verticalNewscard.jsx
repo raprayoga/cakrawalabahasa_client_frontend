@@ -7,10 +7,14 @@ import {
 export default function VerticalNewscard(props) {
   return (
     <>
-      <Card.Img
-        variant="top"
-        src={`http://127.0.0.1:8080/img/artikel/${props.artikelData.image}`}
-      />
+      <Link
+        to={`/news-detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
+      >
+        <Card.Img
+          variant="top"
+          src={`http://127.0.0.1:8080/img/artikel/${props.artikelData.image}`}
+          />
+      </Link>
       <Link
         to={`/news-detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
         style={{ textDecoration: "none" }}

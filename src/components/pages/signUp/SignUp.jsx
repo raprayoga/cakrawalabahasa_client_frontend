@@ -71,7 +71,7 @@ export default class SignUp extends Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = event.target.value;
+    const value = target.value;
     let formTemp = { ...this.state.form };
     formTemp[target.name] =
       target.name !== "agreement" ? value : event.target.checked;

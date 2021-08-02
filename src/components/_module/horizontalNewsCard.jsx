@@ -10,10 +10,14 @@ export default function HorizontalNewsCard(props) {
     <>
       <div className="row align-items-center">
         <div className={props.imageClass}>
-          <Card.Img
-            variant="top"
-            src={`http://127.0.0.1:8080/img/artikel/${props.artikelData.image}`}
-          />
+          <Link
+            to={`/news-detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
+          >
+            <Card.Img
+              variant="top"
+              src={`http://127.0.0.1:8080/img/artikel/${props.artikelData.image}`}
+            />
+          </Link>
         </div>
         <div className={props.textClass}>
           <Link
