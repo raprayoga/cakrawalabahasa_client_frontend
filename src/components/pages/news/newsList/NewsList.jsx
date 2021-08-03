@@ -77,7 +77,7 @@ export default class NewsList extends Component {
     await axios
       .get(`http://127.0.0.1:8000/api/artikel-kategori`)
       .then((resp) => {
-        const kategori = resp.data.artikel_kategori.filter((kategori) => kategori.id == this.state.kategoriId)
+        const kategori = resp.data.artikel_kategori.filter((kategori) => parseInt(kategori.id) === parseInt(this.state.kategoriId))
         this.setState({
           artikelKategori: resp.data.artikel_kategori,
           kategori: kategori[0].artikel_kategori
@@ -180,7 +180,7 @@ export default class NewsList extends Component {
               {this.state.artikelKategori.map((kategori) => (
               <Link to={`/news/list?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
                 <Button variant="outline-warning" size="sm" className="kategori-button"
-                  active={kategori.id == this.state.kategoriId}
+                  active={parseInt(kategori.id) === parseInt(this.state.kategoriId)}
                 >
                   {kategori.artikel_kategori}
                 </Button>

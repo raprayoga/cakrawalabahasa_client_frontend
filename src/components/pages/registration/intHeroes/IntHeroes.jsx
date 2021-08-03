@@ -12,21 +12,21 @@ import Footer from "components/parts/footer/Footer";
 
 import Regist from "assets/images/registration/regist.png";
 
+import "components/pages/registration/intHeroes/intHeroes.css";
+
 export default class IntHeroes extends Component {
   constructor(props) {
     super(props);
     this.state = {
       form: {
-        nama_lengkap: "",
-        nomor_wa: "",
-        domisili: "",
-        usia: "",
+        full_name: "",
+        wa_number: "",
+        nationality: "",
+        age: "",
         status: "",
-        instansi: "",
-        divisi1: "",
-        divisi2: "",
-        link_portfolio: "",
-        cv: "",
+        language_speake: "",
+        language_teach: "",
+        divsion: "",
         follow_ig: "",
         agreement: false,
       },
@@ -99,42 +99,40 @@ export default class IntHeroes extends Component {
 
   render() {
     let errorFullName;
-    let errorNoWa;
-    let errorUsia;
-    let errorDomisili;
+    let errorWaNumber;
+    let errorAge;
+    let errorNationality;
     let errorStatus;
-    let errorInstansi;
-    let errorDivisi1;
-    let errorDivisi2;
-    let errorPortfolio;
-    let errorCv;
+    let errorLanguageSpeake;
+    let errorLanguageTeach;
+    let errorDivsion;
     let errorIg;
     let errorAgree;
-    if (this.state.errorForm.nama_lengkap) {
+    if (this.state.errorForm.full_name) {
       errorFullName = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.nama_lengkap}
+          {this.state.errorForm.full_name}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.nomor_wa) {
-      errorNoWa = (
+    if (this.state.errorForm.wa_number) {
+      errorWaNumber = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.nomor_wa}
+          {this.state.errorForm.wa_number}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.usia) {
-      errorUsia = (
+    if (this.state.errorForm.age) {
+      errorAge = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.usia}
+          {this.state.errorForm.age}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.domisili) {
-      errorDomisili = (
+    if (this.state.errorForm.nationality) {
+      errorNationality = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.domisili}
+          {this.state.errorForm.nationality}
         </Form.Control.Feedback>
       );
     }
@@ -145,38 +143,24 @@ export default class IntHeroes extends Component {
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.instansi) {
-      errorInstansi = (
+    if (this.state.errorForm.language_speake) {
+      errorLanguageSpeake = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.instansi}
+          {this.state.errorForm.language_speake}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.divisi1) {
-      errorDivisi1 = (
+    if (this.state.errorForm.language_teach) {
+      errorLanguageTeach = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.divisi1}
+          {this.state.errorForm.language_teach}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.divisi2) {
-      errorDivisi2 = (
+    if (this.state.errorForm.divsion) {
+      errorDivsion = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.divisi2}
-        </Form.Control.Feedback>
-      );
-    }
-    if (this.state.errorForm.link_portfolio) {
-      errorPortfolio = (
-        <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.link_portfolio}
-        </Form.Control.Feedback>
-      );
-    }
-    if (this.state.errorForm.cv) {
-      errorCv = (
-        <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.cv}
+          {this.state.errorForm.divsion}
         </Form.Control.Feedback>
       );
     }
@@ -200,19 +184,19 @@ export default class IntHeroes extends Component {
       <>
         <Header {...this.props}></Header>
 
-        <div
-            id="jumbotron"
-            className="jumbotron d-flex align-items-center"
-            style={{ backgroundImage: `url(${Regist})` }}
-          >
-          <div className="container text-light">
-            <div className="col-lg-8">
-              <h1 className="display-6">Let's Grow With Us</h1>
+        <div id="int-heroes">
+          <div
+              id="jumbotron"
+              className="jumbotron d-flex align-items-center"
+              style={{ backgroundImage: `url(${Regist})` }}
+            >
+            <div className="container text-light">
+              <div className="col-lg-8">
+                <h1 className="display-6">Let's Grow With Us</h1>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div id="local-heroes">
           <div className="container mt-3">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb">
@@ -231,65 +215,67 @@ export default class IntHeroes extends Component {
                   <FontAwesomeIcon icon={faChevronRight} className="mx-3" />
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  Local Heroes
+                  Int Heroes
                 </li>
               </ol>
             </nav>
 
+            <h1 className="text-center mb-5">International Heroes Registration</h1>
+
             <Form validated={this.state.validated} onSubmit={this.handleSubmit} className="mb-3 form-wrap mx-auto">
-              <Form.Group controlId="nama_lengkap" className="mb-5">
+              <Form.Group controlId="full_name" className="mb-5">
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
                   required
-                  name="nama_lengkap"
+                  name="full_name"
                   type="text"
                   placeholder="Enter Text Here"
-                  value={this.state.form.nama_lengkap}
+                  value={this.state.form.full_name}
                   onChange={this.handleInputChange}
                 />
                 {errorFullName}
               </Form.Group>
               <div className="row">
                 <div className="col-md-6">
-                  <Form.Group controlId="nomor_wa" className="mb-5">
-                    <Form.Label>No.Telp</Form.Label>
+                  <Form.Group controlId="wa_number" className="mb-5">
+                    <Form.Label>Whatsapp Number</Form.Label>
                     <Form.Control
                       required
-                      name="nomor_wa"
+                      name="wa_number"
                       type="phone"
                       placeholder="Enter Number Here"
-                      value={this.state.form.nomor_wa}
+                      value={this.state.form.wa_number}
                       onChange={this.handleInputChange}
                     />
-                    {errorNoWa}
+                    {errorWaNumber}
                   </Form.Group>
                 </div>
                 <div className="col-md-6">
-                  <Form.Group controlId="usia" className="mb-5">
-                    <Form.Label>Usia</Form.Label>
+                  <Form.Group controlId="age" className="mb-5">
+                    <Form.Label>Age</Form.Label>
                     <Form.Control
                       required
-                      name="usia"
+                      name="age"
                       type="number"
                       placeholder="Enter Number Here"
-                      value={this.state.form.usia}
+                      value={this.state.form.age}
                       onChange={this.handleInputChange}
                     />
-                    {errorUsia}
+                    {errorAge}
                   </Form.Group>
                 </div>
               </div>
-              <Form.Group controlId="domisili" className="mb-5">
-                <Form.Label>Domisili</Form.Label>
+              <Form.Group controlId="nationality" className="mb-5">
+                <Form.Label>Nationality</Form.Label>
                 <Form.Control
                   required
-                  name="domisili"
+                  name="nationality"
                   type="text"
                   placeholder="Enter Text Here"
-                  value={this.state.form.domisili}
+                  value={this.state.form.nationality}
                   onChange={this.handleInputChange}
                 />
-                {errorDomisili}
+                {errorNationality}
               </Form.Group>
               <Form.Group controlId="status" className="mb-5">
                 <Form.Label>Status</Form.Label>
@@ -309,91 +295,54 @@ export default class IntHeroes extends Component {
                 </Form.Control>
                 {errorStatus}
               </Form.Group>
-              <Form.Group controlId="instansi" className="mb-5">
-                <Form.Label>Instansi</Form.Label>
-                <Form.Control
-                  required
-                  name="instansi"
-                  type="text"
-                  placeholder="Enter Text Here"
-                  value={this.state.form.instansi}
-                  onChange={this.handleInputChange}
-                />
-                {errorInstansi}
-              </Form.Group>
               <div className="row">
                 <div className="col-md-6">
-                  <Form.Group controlId="divisi1" className="mb-5">
-                    <Form.Label>Divisi Pilihan Pertama</Form.Label>
+                  <Form.Group controlId="language_speake" className="mb-5">
+                    <Form.Label>Language Speake</Form.Label>
                     <Form.Control
-                      as="select"
                       required
-                      aria-label="Default select example"
-                      name="divisi1"
-                      value={this.state.form.divisi1}
+                      name="language_speake"
+                      type="text"
+                      placeholder="Enter Text Here"
+                      value={this.state.form.language_speake}
                       onChange={this.handleInputChange}
-                    >
-                      <option value="" disabled>Select Dvisi</option>
-                      <option value="Pengajar Bule">Pengajar Bule</option>
-                      <option value="Fasilitator">Fasilitator</option>
-                      <option value="Operasional">Operasional</option>
-                      <option value="Media Sosial">Media Sosial</option>
-                      <option value="Media Publikasi">Media Publikasi</option>
-                      <option value="Desain Grafis">Desain Grafis</option>
-                      <option value="Video Grafis">Video Grafis</option>
-                    </Form.Control>
-                    {errorDivisi1}
+                    />
+                    {errorLanguageSpeake}
                   </Form.Group>
                 </div>
                 <div className="col-md-6">
-                  <Form.Group controlId="divisi2" className="mb-5">
-                    <Form.Label>Divisi Pilihan Kedua</Form.Label>
+                  <Form.Group controlId="language_teach" className="mb-5">
+                    <Form.Label>Language Teach</Form.Label>
                     <Form.Control
-                      as="select"
                       required
-                      aria-label="Default select example"
-                      name="divisi2"
-                      value={this.state.form.divisi2}
+                      name="language_teach"
+                      type="text"
+                      placeholder="Enter Text Here"
+                      value={this.state.form.language_teach}
                       onChange={this.handleInputChange}
-                    >
-                      <option value="" disabled>Select Dvisi</option>
-                      <option value="Pengajar Bule">Pengajar Bule</option>
-                      <option value="Fasilitator">Fasilitator</option>
-                      <option value="Operasional">Operasional</option>
-                      <option value="Media Sosial">Media Sosial</option>
-                      <option value="Media Publikasi">Media Publikasi</option>
-                      <option value="Desain Grafis">Desain Grafis</option>
-                      <option value="Video Grafis">Video Grafis</option>
-                    </Form.Control>
-                    {errorDivisi2}
+                    />
+                    {errorLanguageTeach}
                   </Form.Group>
                 </div>
               </div>
-              <Form.Group controlId="link_portfolio" className="mb-5">
-                <Form.Label>Link Portfolio (jika ada)</Form.Label>
+              <Form.Group controlId="divsion" className="mb-5">
+                <Form.Label>Divisi Pilihan Kedua</Form.Label>
                 <Form.Control
-                  name="link_portfolio"
-                  type="text"
-                  placeholder="Enter Text Here"
-                  value={this.state.form.link_portfolio}
-                  onChange={this.handleInputChange}
-                />
-                {errorPortfolio}
-              </Form.Group>
-              <Form.Group controlId="cv" className="mb-5">
-                <Form.Label>Link CV</Form.Label>
-                <Form.Control
+                  as="select"
                   required
-                  name="cv"
-                  type="text"
-                  placeholder="Enter Text Here"
-                  value={this.state.form.cv}
+                  aria-label="Default select example"
+                  name="divsion"
+                  value={this.state.form.divsion}
                   onChange={this.handleInputChange}
-                />
-                {errorCv}
+                >
+                  <option value="" disabled>Select Dvision</option>
+                  <option value="orphans">Orphans</option>
+                  <option value="local heroes">Local Heroes</option>
+                </Form.Control>
+                {errorDivsion}
               </Form.Group>
               <Form.Group controlId="follow_ig" className="mb-5">
-                <Form.Label>Sudah Follow Instagram Cakrawala Bahasa</Form.Label>
+                <Form.Label>Have you followed the Cakrawala Bahasa instagram?</Form.Label>
                 <Form.Control
                   as="select"
                   required

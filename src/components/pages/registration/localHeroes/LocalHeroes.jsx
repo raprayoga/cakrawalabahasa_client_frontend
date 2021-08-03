@@ -202,19 +202,19 @@ export default class LocalHeroes extends Component {
       <>
         <Header {...this.props}></Header>
 
-        <div
-            id="jumbotron"
-            className="jumbotron d-flex align-items-center"
-            style={{ backgroundImage: `url(${Regist})` }}
-          >
-          <div className="container text-light">
-            <div className="col-lg-8">
-              <h1 className="display-6">Let's Grow With Us</h1>
+        <div id="local-heroes">
+          <div
+              id="jumbotron"
+              className="jumbotron d-flex align-items-center"
+              style={{ backgroundImage: `url(${Regist})` }}
+            >
+            <div className="container text-light">
+              <div className="col-lg-8">
+                <h1 className="display-6">Let's Grow With Us</h1>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div id="local-heroes">
           <div className="container mt-3">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb">
@@ -237,6 +237,8 @@ export default class LocalHeroes extends Component {
                 </li>
               </ol>
             </nav>
+
+            <h1 className="text-center mb-5">Local Heroes Registration</h1>
 
             <Form validated={this.state.validated} onSubmit={this.handleSubmit} className="mb-3 form-wrap mx-auto">
               <Form.Group controlId="nama_lengkap" className="mb-5">
