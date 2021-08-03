@@ -1,0 +1,14 @@
+#jumbotron {
+  background-size: cover;
+  height: 326px;
+  background-position: center;
+}
+
+#jumbotron h1 {
+  font-family: Montserrat-SemiBold, Arial, serif;
+  margin-top: 3.5rem;
+}
+
+.form-wrap {
+  max-width: 600px;
+}

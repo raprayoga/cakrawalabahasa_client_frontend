@@ -19,3 +19,7 @@
 #news-channel .dokumentasi {
   background-color: #1d2951;
 }
+
+.carousel-control-prev:hover, .carousel-control-next:hover  {
+  background-color: #d3cdcd3d;
+}

@@ -6,7 +6,7 @@ export default function VerticalNewscard(props) {
   return (
     <>
       <Link
-        to={`/news-detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
+        to={`/news/detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
       >
         <Card.Img
           variant="top"
@@ -14,7 +14,7 @@ export default function VerticalNewscard(props) {
           />
       </Link>
       <Link
-        to={`/news-detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
+        to={`/news/detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
         style={{ textDecoration: "none" }}
         className="text-secondary"
       >

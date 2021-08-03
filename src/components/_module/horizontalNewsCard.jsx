@@ -9,7 +9,7 @@ export default function HorizontalNewsCard(props) {
       <div className="row align-items-center">
         <div className={props.imageClass}>
           <Link
-            to={`/news-detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
+            to={`/news/detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
           >
             <Card.Img
               variant="top"
@@ -19,7 +19,7 @@ export default function HorizontalNewsCard(props) {
         </div>
         <div className={props.textClass}>
           <Link
-            to={`/news-detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
+            to={`/news/detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
             style={{ textDecoration: "none" }}
             className="text-secondary"
           >

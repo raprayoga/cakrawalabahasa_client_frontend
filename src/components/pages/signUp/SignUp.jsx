@@ -245,7 +245,7 @@ export default class SignUp extends Component {
                 />
                 {errorPasswordConfirm}
               </Form.Group>
-              <div class="d-flex align-items-start">
+              <div className="d-flex align-items-start">
                 <input
                 type="checkbox"
                 name="agreement"

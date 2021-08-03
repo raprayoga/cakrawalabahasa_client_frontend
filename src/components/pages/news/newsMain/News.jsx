@@ -14,11 +14,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Header from "components/parts/header/Header";
 import Footer from "components/parts/footer/Footer";
-import HorizontalNewsCard from "components/_module/horizontalNewsCard";
-import VerticalNewscard from "components/_module/verticalNewscard";
-import TitleNewsLink from "components/_module/titleNewsLink";
+import HorizontalNewsCard from "components/_module/HorizontalNewsCard";
+import VerticalNewscard from "components/_module/VerticalNewscard";
+import TitleNewsLink from "components/_module/TitleNewsLink";
 
-import "components/pages/news/news.css";
+import "components/pages/news/newsMain/news.css";
 
 function CarouselItem(props) {
   let dokumentasi = props.dokumentasi;
@@ -187,7 +187,7 @@ export default class News extends Component {
             <h1>News Channel</h1>
             <div className="row mb-5">
               {this.state.artikelKategori.map((kategori) => (
-              <Link to={`/news-list?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
+              <Link to={`/news/list?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
                 <Button variant="outline-warning" size="sm" className="kategori-button">
                   {kategori.artikel_kategori}
                 </Button>

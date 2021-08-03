@@ -8,14 +8,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Header from "components/parts/header/Header";
 import Footer from "components/parts/footer/Footer";
-import TitleNewsLink from "components/_module/titleNewsLink";
+import TitleNewsLink from "components/_module/TitleNewsLink";
 
 import FB from "assets/images/newsDetail/facebook.png";
 import Share from "assets/images/newsDetail/share.png";
 import Twitter from "assets/images/newsDetail/twitter.png";
 import WA from "assets/images/newsDetail/whatsapp.png";
 
-import "components/pages/newsDetail/newsDetail.css";
+import "components/pages/news/newsDetail/newsDetail.css";
 
 export default class NewsDetail extends Component {
   constructor(props) {
@@ -47,10 +47,10 @@ export default class NewsDetail extends Component {
     this.getArtikelPopuler();
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.history.listen(async (location) => {
       await this.setState({
-        id: location.pathname.split("/")[2],
+        id: location.pathname.split("/")[3],
       });
       this.getArtikel();
       this.getArtikelPopuler();
@@ -127,7 +127,7 @@ export default class NewsDetail extends Component {
                   <FontAwesomeIcon icon={faChevronRight} className="mx-3" />
                 </li>
                 <li className="breadcrumb-item" aria-current="page">
-                  <Link to={`/news-list?kategori=${this.state.kategori.artikel_kategori}&id=${this.state.kategori.id}`}>
+                  <Link to={`/news/list?kategori=${this.state.kategori.artikel_kategori}&id=${this.state.kategori.id}`}>
                   {this.state.kategori.artikel_kategori}
                   </Link>
                 </li>

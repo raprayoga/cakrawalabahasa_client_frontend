@@ -7,7 +7,7 @@ export default function TitleNewsLink(props) {
     <>
       <div className="mb-4" key={props.artikelData.id}>
         <Link
-          to={`/news-detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
+          to={`/news/detail/${props.artikelData.id}/${props.artikelData.linkJudul}`}
           style={{ textDecoration: "none" }}
           className="text-secondary"
         >

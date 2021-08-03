@@ -2,11 +2,13 @@ import LandingPage from "components/pages/landingPage/LandingPage";
 import AboutUs from "components/pages/aboutUs/AboutUs";
 import OurPrograms from "components/pages/ourProgram/OurPrograms";
 import Contact from "components/pages/contact/Contact";
-import NewsDetail from "components/pages/newsDetail/NewsDetail";
-import NewsList from "components/pages/newsList/NewsList";
-import News from "components/pages/news/News";
+import NewsDetail from "components/pages/news/newsDetail/NewsDetail";
+import NewsList from "components/pages/news/newsList/NewsList";
+import News from "components/pages/news/newsMain/News";
 import SignUp from "components/pages/signUp/SignUp";
 import SignIn from "components/pages/signIn/SignIn";
+import LocalHeroes from "components/pages/registration/localHeroes/LocalHeroes";
+import IntHeroes from "components/pages/registration/intHeroes/IntHeroes";
 
   const routes = [
     {
@@ -23,12 +25,16 @@ import SignIn from "components/pages/signIn/SignIn";
       component: OurPrograms
     },
     {
-      path: "/news",
-      component: News
+      path: "/news/detail/:id",
+      component: NewsDetail
     },
     {
-      path: "/news-detail/:id",
-      component: NewsDetail
+      path: "/news/list",
+      component: NewsList
+    },
+    {
+      path: "/news",
+      component: News
     },
     {
       path: "/contact",
@@ -43,8 +49,12 @@ import SignIn from "components/pages/signIn/SignIn";
       component: SignIn
     },
     {
-      path: "/news-list",
-      component: NewsList
+      path: "/registration/local-heroes",
+      component: LocalHeroes
+    },
+    {
+      path: "/registration/int-heroes",
+      component: IntHeroes
     }
   ];
 

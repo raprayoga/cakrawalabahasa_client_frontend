@@ -70,58 +70,64 @@ export default class LandingPage extends Component {
           <div className="our-program">
             <div className="container">
               <h2 className="mb-4">Our Program</h2>
-              <div className="row program-list text-light">
+              <div className="row program-list">
                 <div className="col-12 col-md-8">
-                  <div className="image-program p-2">
-                    <img src={Program1} className="img-program" alt="Program 1" />
-                    <div className="overlay"></div>
-                    <div className="caption">
-                      <h3>Privat Bahasa</h3>
-                      <p>
-                        Belajar bahasa secara privat secara online atau offline
-                        dengan berbagai pilihan paket dan sesi yang memudahkan
-                        pembelajaran.
-                      </p>
+                  <Link to="/our-programs">
+                    <div className="image-program p-2">
+                      <img src={Program1} className="img-program" alt="Program 1" />
+                      <div className="overlay"></div>
+                      <div className="caption text-light">
+                        <h3>Privat Bahasa</h3>
+                        <p>
+                          Belajar bahasa secara privat secara online atau offline
+                          dengan berbagai pilihan paket dan sesi yang memudahkan
+                          pembelajaran.
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
                 <div className="col-12 col-md-4">
                   <div className="row pb-2">
                     <div className="col-12">
-                      <div className="image-program p-2">
-                        <img
-                          src={Program2}
-                          className="img-fluid img-program"
-                          alt="Program 2"
-                        />
-                        <div className="overlay"></div>
-                        <div className="caption">
-                          <h3>Kelas Reguler</h3>
-                          <p>
-                            Program kelas bahasa secara online selama 8 kali
-                            pertemuan dalam satu bulan.
-                          </p>
+                      <Link to="/our-programs">
+                        <div className="image-program p-2">
+                          <img
+                            src={Program2}
+                            className="img-fluid img-program"
+                            alt="Program 2"
+                          />
+                          <div className="overlay"></div>
+                          <div className="caption text-light">
+                            <h3>Kelas Reguler</h3>
+                            <p>
+                              Program kelas bahasa secara online selama 8 kali
+                              pertemuan dalam satu bulan.
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                   </div>
                   <div className="row pt-2">
                     <div className="col-12">
-                      <div className="image-program p-2">
-                        <img
-                          src={Program3}
-                          className="img-fluid img-program"
-                          alt="Program 3"
-                        />
-                        <div className="overlay"></div>
-                        <div className="caption">
-                          <h3>Membership Program</h3>
-                          <p>
-                            Kami menyediakan berbagai kegiatan menarik melalui
-                            Membership Program Cakrawala Bahasa.
-                          </p>
+                      <Link to="/our-programs">
+                        <div className="image-program p-2">
+                          <img
+                            src={Program3}
+                            className="img-fluid img-program"
+                            alt="Program 3"
+                          />
+                          <div className="overlay"></div>
+                          <div className="caption text-light">
+                            <h3>Membership Program</h3>
+                            <p>
+                              Kami menyediakan berbagai kegiatan menarik melalui
+                              Membership Program Cakrawala Bahasa.
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -150,7 +156,7 @@ export default class LandingPage extends Component {
                       />
                       <Card.Body>
                         <Link
-                          to={`/news-detail/${artikel.id}/${artikel.linkJudul}`}
+                          to={`/news/detail/${artikel.id}/${artikel.linkJudul}`}
                           style={{ textDecoration: "none" }}
                           className="text-light"
                         >

@@ -13,10 +13,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Header from "components/parts/header/Header";
 import Footer from "components/parts/footer/Footer";
-import HorizontalNewsCard from "components/_module/horizontalNewsCard";
-import TitleNewsLink from "components/_module/titleNewsLink";
+import HorizontalNewsCard from "components/_module/HorizontalNewsCard";
+import TitleNewsLink from "components/_module/TitleNewsLink";
 
-import "components/pages/newsList/newsList.css";
+import "components/pages/news/newsList/newsList.css";
 
 export default class NewsList extends Component {
   constructor(props) {
@@ -52,10 +52,13 @@ export default class NewsList extends Component {
     this.getArtikelKategori();
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.history.listen(async (location) => {
       await this.setState({
         kategoriId: location.search.split("=")[2],
+        perPage: 10,
+        currentPage: 1,
+        totalItem: 0
       });
       this.getArtikel();
       this.getArtikelKategori();
@@ -175,7 +178,7 @@ export default class NewsList extends Component {
 
             <div className="row mb-5">
               {this.state.artikelKategori.map((kategori) => (
-              <Link to={`/news-list?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
+              <Link to={`/news/list?kategori=${kategori.artikel_kategori}&id=${kategori.id}`} key={kategori.id} className="kategori-link p-0">
                 <Button variant="outline-warning" size="sm" className="kategori-button"
                   active={kategori.id == this.state.kategoriId}
                 >
