@@ -9,6 +9,7 @@ import SignUp from "components/pages/signUp/SignUp";
 import SignIn from "components/pages/signIn/SignIn";
 import LocalHeroes from "components/pages/registration/localHeroes/LocalHeroes";
 import IntHeroes from "components/pages/registration/intHeroes/IntHeroes";
+import Member from "components/pages/registration/member/Member";
 
   const routes = [
     {
@@ -55,6 +56,10 @@ import IntHeroes from "components/pages/registration/intHeroes/IntHeroes";
     {
       path: "/registration/int-heroes",
       component: IntHeroes
+    },
+    {
+      path: "/registration/member",
+      component: Member
     }
   ];
 

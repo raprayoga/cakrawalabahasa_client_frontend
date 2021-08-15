@@ -159,12 +159,14 @@ export default class NewsDetail extends Component {
                   </a>
                   <a
                     target="blank"
-                    href="https://twitter.com/share?ref_src=https://news.detik.com"
+                    href={`https://twitter.com/share?ref_src=${window.location.href}`}
                     data-show-count="false"
                   >
                     <img src={Twitter} className="img-fluid" alt="twitter share" />
                   </a>
-                  <img src={WA} className="img-fluid" alt="whatsapp share" />
+                  <a href={`whatsapp://send?text=${window.location.href}`} data-action="share/whatsapp/share">
+                    <img src={WA} className="img-fluid" alt="whatsapp share" />
+                  </a>
                 </div>
 
                 <div className="row mt-4 mb-3">
@@ -203,7 +205,9 @@ export default class NewsDetail extends Component {
                   >
                     <img src={Twitter} className="img-fluid" alt="twitter share" />
                   </a>
-                  <img src={WA} className="img-fluid" alt="whatsapp share" />
+                  <a href={`whatsapp://send?text=${window.location.href}`} data-action="share/whatsapp/share">
+                    <img src={WA} className="img-fluid" alt="whatsapp share" />
+                  </a>
                 </div>
               </div>
 

@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 import { Form, Button } from "react-bootstrap";
+import DatePicker from "react-datepicker";
 import { Link } from "react-router-dom";
 import { faChevronRight, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,21 +13,23 @@ import Footer from "components/parts/footer/Footer";
 
 import Regist from "assets/images/registration/regist.png";
 
-import "components/pages/registration/intHeroes/intHeroes.css";
+import "react-datepicker/dist/react-datepicker.css";
 
-export default class IntHeroes extends Component {
+export default class Member extends Component {
   constructor(props) {
     super(props);
     this.state = {
       form: {
-        full_name: "",
-        wa_number: "",
-        nationality: "",
-        age: "",
+        nama_lengkap: "",
+        nomor_wa: "",
+        tgl_lahir: "",
+        tgl_lahir_display: "",
+        alamat: "",
+        kota: "",
         status: "",
-        language_speake: "",
-        language_teach: "",
-        divsion: "",
+        instansi: "",
+        minat: "",
+        paket: "",
         follow_ig: "",
         agreement: false,
       },
@@ -36,6 +39,7 @@ export default class IntHeroes extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
 
     this.Toast = Swal.mixin({
       toast: true,
@@ -74,6 +78,15 @@ export default class IntHeroes extends Component {
     this.setState({ busy: "d-none" });
   }
 
+  handleDateChange(event) {
+    let formTemp = { ...this.state.form };
+    formTemp["tgl_lahir"] = event.getDate() + '-' + event.getMonth() + '-' + event.getYear()
+    formTemp["tgl_lahir_display"] = event
+    this.setState({
+      form: { ...formTemp },
+    });
+  }
+
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
@@ -99,40 +112,41 @@ export default class IntHeroes extends Component {
 
   render() {
     let errorFullName;
-    let errorWaNumber;
-    let errorAge;
-    let errorNationality;
+    let errorNoWa;
+    let errorTglLahir;
+    let errorAlamat;
+    let errorKota;
     let errorStatus;
-    let errorLanguageSpeake;
-    let errorLanguageTeach;
-    let errorDivsion;
+    let errorInstansi;
+    let errorMinat;
+    let errorPaket;
     let errorIg;
     let errorAgree;
-    if (this.state.errorForm.full_name) {
+    if (this.state.errorForm.nama_lengkap) {
       errorFullName = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.full_name}
+          {this.state.errorForm.nama_lengkap}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.wa_number) {
-      errorWaNumber = (
+    if (this.state.errorForm.nomor_wa) {
+      errorNoWa = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.wa_number}
+          {this.state.errorForm.nomor_wa}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.age) {
-      errorAge = (
+    if (this.state.errorForm.tgl_lahir) {
+      errorTglLahir = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.age}
+          {this.state.errorForm.tgl_lahir}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.nationality) {
-      errorNationality = (
+    if (this.state.errorForm.alamat) {
+      errorAlamat = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.nationality}
+          {this.state.errorForm.alamat}
         </Form.Control.Feedback>
       );
     }
@@ -143,24 +157,31 @@ export default class IntHeroes extends Component {
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.language_speake) {
-      errorLanguageSpeake = (
+    if (this.state.errorForm.instansi) {
+      errorInstansi = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.language_speake}
+          {this.state.errorForm.instansi}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.language_teach) {
-      errorLanguageTeach = (
+    if (this.state.errorForm.kota) {
+      errorKota = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.language_teach}
+          {this.state.errorForm.kota}
         </Form.Control.Feedback>
       );
     }
-    if (this.state.errorForm.divsion) {
-      errorDivsion = (
+    if (this.state.errorForm.minat) {
+      errorMinat = (
         <Form.Control.Feedback type="invalid">
-          {this.state.errorForm.divsion}
+          {this.state.errorForm.minat}
+        </Form.Control.Feedback>
+      );
+    }
+    if (this.state.errorForm.paket) {
+      errorPaket = (
+        <Form.Control.Feedback type="invalid">
+          {this.state.errorForm.paket}
         </Form.Control.Feedback>
       );
     }
@@ -184,7 +205,7 @@ export default class IntHeroes extends Component {
       <>
         <Header {...this.props}></Header>
 
-        <div id="int-heroes">
+        <div id="local-heroes">
           <div
               id="jumbotron"
               className="jumbotron d-flex align-items-center"
@@ -215,67 +236,79 @@ export default class IntHeroes extends Component {
                   <FontAwesomeIcon icon={faChevronRight} className="mx-3" />
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  Int Heroes
+                  Local Heroes
                 </li>
               </ol>
             </nav>
 
-            <h1 className="text-center mb-5">International Heroes Registration</h1>
+            <h1 className="text-center mb-5">Local Heroes Registration</h1>
 
             <Form validated={this.state.validated} onSubmit={this.handleSubmit} className="mb-3 form-wrap mx-auto">
-              <Form.Group controlId="full_name" className="mb-5">
+              <Form.Group controlId="nama_lengkap" className="mb-5">
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
                   required
-                  name="full_name"
+                  name="nama_lengkap"
                   type="text"
                   placeholder="Enter Text Here"
-                  value={this.state.form.full_name}
+                  value={this.state.form.nama_lengkap}
                   onChange={this.handleInputChange}
                 />
                 {errorFullName}
               </Form.Group>
               <div className="row">
                 <div className="col-md-6">
-                  <Form.Group controlId="wa_number" className="mb-5">
-                    <Form.Label>Whatsapp Number</Form.Label>
+                  <Form.Group controlId="nomor_wa" className="mb-5">
+                    <Form.Label>No. Telp</Form.Label>
                     <Form.Control
                       required
-                      name="wa_number"
+                      name="nomor_wa"
                       type="phone"
                       placeholder="Enter Number Here"
-                      value={this.state.form.wa_number}
+                      value={this.state.form.nomor_wa}
                       onChange={this.handleInputChange}
                     />
-                    {errorWaNumber}
+                    {errorNoWa}
                   </Form.Group>
                 </div>
                 <div className="col-md-6">
-                  <Form.Group controlId="age" className="mb-5">
-                    <Form.Label>Age</Form.Label>
-                    <Form.Control
-                      required
-                      name="age"
-                      type="number"
-                      placeholder="Enter Number Here"
-                      value={this.state.form.age}
-                      onChange={this.handleInputChange}
-                    />
-                    {errorAge}
-                  </Form.Group>
+                <Form.Group controlId="tgl_lahir" className="mb-5">
+                  <Form.Label>Tgl Lahir</Form.Label>
+                  <br />
+                  <DatePicker
+                    name="tgl_lahir"
+                    selected={this.state.form.tgl_lahir_display}
+                    value={this.state.form.tgl_lahir_display}
+                    onChange={this.handleDateChange}
+                    className="form-control"
+                  />
+                  {errorTglLahir}
+                </Form.Group>
                 </div>
               </div>
-              <Form.Group controlId="nationality" className="mb-5">
-                <Form.Label>Nationality</Form.Label>
-                <Form.Control
+              <Form.Group className="mb-3" controlId="alamat">
+                <Form.Label>Alamat</Form.Label>
+                <Form.Control 
+                  as="textarea"
+                  rows={3}
                   required
-                  name="nationality"
-                  type="text"
-                  placeholder="Enter Text Here"
-                  value={this.state.form.nationality}
+                  name="alamat"
+                  value={this.state.form.alamat}
                   onChange={this.handleInputChange}
                 />
-                {errorNationality}
+                {errorAlamat}
+              </Form.Group>
+              <Form.Group controlId="kota" className="mb-5">
+                <Form.Label>Kota</Form.Label>
+                <Form.Control
+                  required
+                  name="kota"
+                  type="text"
+                  placeholder="Enter Text Here"
+                  value={this.state.form.kota}
+                  onChange={this.handleInputChange}
+                />
+                {errorKota}
               </Form.Group>
               <Form.Group controlId="status" className="mb-5">
                 <Form.Label>Status</Form.Label>
@@ -295,54 +328,59 @@ export default class IntHeroes extends Component {
                 </Form.Control>
                 {errorStatus}
               </Form.Group>
+              <Form.Group controlId="instansi" className="mb-5">
+                <Form.Label>Instansi</Form.Label>
+                <Form.Control
+                  required
+                  name="instansi"
+                  type="text"
+                  placeholder="Enter Text Here"
+                  value={this.state.form.instansi}
+                  onChange={this.handleInputChange}
+                />
+                {errorInstansi}
+              </Form.Group>
               <div className="row">
                 <div className="col-md-6">
-                  <Form.Group controlId="language_speake" className="mb-5">
-                    <Form.Label>Language Speake</Form.Label>
+                  <Form.Group controlId="minat" className="mb-5">
+                    <Form.Label>Minat</Form.Label>
                     <Form.Control
+                      as="select"
                       required
-                      name="language_speake"
-                      type="text"
-                      placeholder="Enter Text Here"
-                      value={this.state.form.language_speake}
+                      aria-label="Default select example"
+                      name="minat"
+                      value={this.state.form.minat}
                       onChange={this.handleInputChange}
-                    />
-                    {errorLanguageSpeake}
+                    >
+                      <option value="" disabled>Select Minat</option>
+                      <option value="pendidika">Pendidika</option>
+                      <option value="wirausaha">Wirausaha</option>
+                    </Form.Control>
+                    {errorMinat}
                   </Form.Group>
                 </div>
                 <div className="col-md-6">
-                  <Form.Group controlId="language_teach" className="mb-5">
-                    <Form.Label>Language Teach</Form.Label>
+                  <Form.Group controlId="paket" className="mb-5">
+                    <Form.Label>Paket</Form.Label>
                     <Form.Control
+                      as="select"
                       required
-                      name="language_teach"
-                      type="text"
-                      placeholder="Enter Text Here"
-                      value={this.state.form.language_teach}
+                      aria-label="Default select example"
+                      name="paket"
+                      value={this.state.form.paket}
                       onChange={this.handleInputChange}
-                    />
-                    {errorLanguageTeach}
+                    >
+                      <option value="" disabled>Select Paket</option>
+                      <option value="gold">Gold</option>
+                      <option value="silver">Silver</option>
+                      <option value="platinum">Platinum</option>
+                    </Form.Control>
+                    {errorPaket}
                   </Form.Group>
                 </div>
               </div>
-              <Form.Group controlId="divsion" className="mb-5">
-                <Form.Label>Divisi Pilihan Kedua</Form.Label>
-                <Form.Control
-                  as="select"
-                  required
-                  aria-label="Default select example"
-                  name="divsion"
-                  value={this.state.form.divsion}
-                  onChange={this.handleInputChange}
-                >
-                  <option value="" disabled>Select Dvision</option>
-                  <option value="orphans">Orphans</option>
-                  <option value="local heroes">Local Heroes</option>
-                </Form.Control>
-                {errorDivsion}
-              </Form.Group>
               <Form.Group controlId="follow_ig" className="mb-5">
-                <Form.Label>Have you followed the Cakrawala Bahasa instagram?</Form.Label>
+                <Form.Label>Sudah Follow Instagram Cakrawala Bahasa</Form.Label>
                 <Form.Control
                   as="select"
                   required

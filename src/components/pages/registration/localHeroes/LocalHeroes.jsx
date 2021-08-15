@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 import { Form, Button } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { faChevronRight, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -256,7 +256,7 @@ export default class LocalHeroes extends Component {
               <div className="row">
                 <div className="col-md-6">
                   <Form.Group controlId="nomor_wa" className="mb-5">
-                    <Form.Label>No.Telp</Form.Label>
+                    <Form.Label>No. Telp</Form.Label>
                     <Form.Control
                       required
                       name="nomor_wa"
@@ -419,7 +419,7 @@ export default class LocalHeroes extends Component {
                 className="mr-3"
                 checked={this.state.agreement}
                 onChange={this.handleInputChange}/>
-                <label for="gree">I agree to The Terms and Privacy Policy.</label>
+                <label htmlFor="gree">I agree to The Terms and Privacy Policy.</label>
               </div>
               {errorAgree}
               <Button
