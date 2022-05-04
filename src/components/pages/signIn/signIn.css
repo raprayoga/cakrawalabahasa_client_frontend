@@ -1,0 +1,12 @@
+.signup-title {
+  font-family: Montserrat-SemiBold, Arial, serif;
+}
+
+.invalid-feedback {
+  display: block !important;
+}
+
+.signin-container {
+  max-width: 720px;
+  margin: auto;
+}

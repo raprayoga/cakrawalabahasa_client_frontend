@@ -1,0 +1,34 @@
+.logo-brand {
+  width: 32.28px;
+  height: 33.15px;
+}
+
+nav {
+  min-height: 80px;
+}
+
+.search-insert {
+  margin-right: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+nav a:hover {
+  color: #545454;
+}
+
+.navbar-nav a {
+  display: block;
+  padding: 0.5rem 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+.dropdown-menu a:hover {
+  background-color: #e5e5e5;
+}
